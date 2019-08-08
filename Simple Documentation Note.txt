@@ -1,0 +1,4 @@
+Shooting project Hard coded parts:
+
+1) Inputs: there are 10 inputs you have to put in the project settings -> input.
+2) Highligh tagged objects it might need to be tagged to laser instead of highlight.
