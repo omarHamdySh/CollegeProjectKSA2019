@@ -9,7 +9,8 @@
 /[Bb]uilds/
 /[Ll]ogs/
 /[Mm]emoryCaptures/
-
+/[Aa]ssets/ShooterAssets/
+/[Aa]ssets/vvss/
 # Never ignore Asset meta data
 !/[Aa]ssets/**/*.meta
 
