@@ -3,7 +3,37 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Wood
+  - sanbagdustRight
+  - Concrete
+  - sandbagdustfront
+  - sandbagdustleft
+  - sandbagdustback
+  - shellBullet
+  - DustRight
+  - Laser
+  - DustBottom
+  - RockEffectLeft
+  - ConcreteDustRight
+  - DustFront
+  - AreaMove
+  - ConcreteDustLeft
+  - RockEffectFront
+  - camerascope
+  - Rifle_magazine
+  - DustLeft
+  - NOTAG
+  - RockEffectRight
+  - BHException
+  - Logo
+  - ConcreteDustTop
+  - RockEffect
+  - LeftLeg
+  - RightLeg
+  - Ground
+  - New tag
+  - Highlight
   layers:
   - Default
   - TransparentFX
