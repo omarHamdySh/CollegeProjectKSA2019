@@ -1303,7 +1303,7 @@ MonoBehaviour:
   savedUp: {x: 0, y: 1, z: 0}
   savedRectSize: {x: 0.3, y: 0.1}
   savedColor: {r: 1, g: 1, b: 1, a: 1}
-  savedTextUV0: {x: 0.8203125, y: 0.19140625}
+  savedTextUV0: {x: 0.1796875, y: 0.08203125}
   savedFill: 0
 --- !u!114 &436126350
 MonoBehaviour:
@@ -2089,7 +2089,7 @@ MonoBehaviour:
   savedUp: {x: 0, y: 1, z: 0}
   savedRectSize: {x: 0.3, y: 0.1}
   savedColor: {r: 1, g: 1, b: 1, a: 1}
-  savedTextUV0: {x: 0.61328125, y: 0.3046875}
+  savedTextUV0: {x: 0.26953125, y: 0.13671875}
   savedFill: 0
 --- !u!114 &559337187
 MonoBehaviour:
@@ -2561,7 +2561,7 @@ MonoBehaviour:
   savedUp: {x: 0, y: 1, z: 0}
   savedRectSize: {x: 0.3, y: 0.1}
   savedColor: {r: 1, g: 1, b: 1, a: 1}
-  savedTextUV0: {x: 0.0390625, y: 0.0703125}
+  savedTextUV0: {x: 0.03125, y: 0.3828125}
   savedFill: 0
 --- !u!114 &707189711
 MonoBehaviour:
@@ -3065,7 +3065,7 @@ MonoBehaviour:
   savedUp: {x: 0, y: 1, z: 0}
   savedRectSize: {x: 0.3, y: 0.1}
   savedColor: {r: 1, g: 1, b: 1, a: 1}
-  savedTextUV0: {x: 0.90625, y: 0.078125}
+  savedTextUV0: {x: 0.296875, y: 0.28515625}
   savedFill: 0
 --- !u!114 &924072197
 MonoBehaviour:
@@ -3280,8 +3280,8 @@ MonoBehaviour:
   OnUse:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_MethodName: EnableMenuforch3
+      - m_Target: {fileID: 1034381231}
+        m_MethodName: changeScene
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3519,7 +3519,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62a99144dc71be744bc25c961675156c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneName: 0
+  sceneName: 1
 --- !u!224 &1045648122 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 224000013127654674, guid: d46cf6b1ad9d84a48ae7548a2a6b41b3,
@@ -5024,7 +5024,7 @@ MonoBehaviour:
   savedUp: {x: 0, y: 1, z: 0}
   savedRectSize: {x: 0.3, y: 0.1}
   savedColor: {r: 1, g: 1, b: 1, a: 1}
-  savedTextUV0: {x: 0.44921875, y: 0.4375}
+  savedTextUV0: {x: 0.57421875, y: 0.0859375}
   savedFill: 0
 --- !u!114 &1426428094
 MonoBehaviour:
@@ -5941,8 +5941,8 @@ MonoBehaviour:
   OnUse:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_MethodName: EnableMenuforch1
+      - m_Target: {fileID: 1483949432}
+        m_MethodName: changeScene
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -6180,7 +6180,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62a99144dc71be744bc25c961675156c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneName: 0
+  sceneName: 1
 --- !u!1 &1509520667
 GameObject:
   m_ObjectHideFlags: 0
@@ -6257,7 +6257,7 @@ MonoBehaviour:
   savedUp: {x: 0, y: 1, z: 0}
   savedRectSize: {x: 0.3, y: 0.1}
   savedColor: {r: 1, g: 1, b: 1, a: 1}
-  savedTextUV0: {x: 0.0390625, y: 0.0703125}
+  savedTextUV0: {x: 0.03125, y: 0.3828125}
   savedFill: 0
 --- !u!114 &1509520671
 MonoBehaviour:
@@ -6377,7 +6377,7 @@ MonoBehaviour:
   savedUp: {x: 0, y: 1, z: 0}
   savedRectSize: {x: 0.3, y: 0.1}
   savedColor: {r: 1, g: 1, b: 1, a: 1}
-  savedTextUV0: {x: 0.65234375, y: 0.390625}
+  savedTextUV0: {x: 0.6015625, y: 0.16796875}
   savedFill: 0
 --- !u!114 &1553415307
 MonoBehaviour:
@@ -6769,7 +6769,7 @@ MonoBehaviour:
   savedUp: {x: 0, y: 1, z: 0}
   savedRectSize: {x: 0.3, y: 0.1}
   savedColor: {r: 1, g: 1, b: 1, a: 1}
-  savedTextUV0: {x: 0.12109375, y: 0.3046875}
+  savedTextUV0: {x: 0.23828125, y: 0.28515625}
   savedFill: 0
 --- !u!114 &1659636058
 MonoBehaviour:
@@ -6964,8 +6964,8 @@ MonoBehaviour:
   OnUse:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_MethodName: EnableMenuforch3
+      - m_Target: {fileID: 1669006460}
+        m_MethodName: changeScene
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -7203,7 +7203,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62a99144dc71be744bc25c961675156c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneName: 0
+  sceneName: 1
 --- !u!1 &1694827753
 GameObject:
   m_ObjectHideFlags: 0
@@ -7223,7 +7223,6 @@ GameObject:
   - component: {fileID: 1694827757}
   - component: {fileID: 1694827756}
   - component: {fileID: 1694827755}
-  - component: {fileID: 1694827764}
   m_Layer: 5
   m_Name: Title (2)
   m_TagString: Laser
@@ -7308,7 +7307,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1694827765}
-        m_MethodName: 
+        m_MethodName: changeScene
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -7534,20 +7533,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1694827753}
   m_CullTransparentMesh: 0
---- !u!114 &1694827764
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1694827753}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b8af7d4c7d30239488a0cf06b4358527, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  scenesMaps:
-  - sceneIndex: 0
 --- !u!114 &1694827765
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7560,7 +7545,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62a99144dc71be744bc25c961675156c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneName: 0
+  sceneName: 1
 --- !u!1 &1712521755
 GameObject:
   m_ObjectHideFlags: 0
@@ -8684,7 +8669,7 @@ MonoBehaviour:
   savedUp: {x: 0, y: 1, z: 0}
   savedRectSize: {x: 0.3, y: 0.1}
   savedColor: {r: 1, g: 1, b: 1, a: 1}
-  savedTextUV0: {x: 0.0390625, y: 0.0703125}
+  savedTextUV0: {x: 0.03125, y: 0.3828125}
   savedFill: 0
 --- !u!114 &1948794017
 MonoBehaviour:

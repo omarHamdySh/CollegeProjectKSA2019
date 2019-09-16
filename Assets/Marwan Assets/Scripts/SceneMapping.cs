@@ -4,7 +4,8 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public enum ScenesNames {
-    Home,
+    MainUI,
+    VRTutorial,
     Shooter,
     Assembly
 }
