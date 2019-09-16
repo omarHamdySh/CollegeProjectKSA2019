@@ -293,6 +293,7 @@ MonoBehaviour:
   displayDropZoneInEditor: 1
   defaultSnappedInteractableObject: {fileID: 0}
   defaultSnappedObject: {fileID: 0}
+  isSnapped2: 0
 --- !u!135 &27796840
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -400,7 +401,7 @@ Transform:
   m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &67651362
 MonoBehaviour:
@@ -862,6 +863,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   snapFlag: 0
+  snapOrderObjects: []
   snapZones:
   - {fileID: 2113685199}
   MySnapZone: {fileID: 2145963157}
@@ -1009,6 +1011,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   snapFlag: 0
+  snapOrderObjects: []
   snapZones:
   - {fileID: 2073526267}
   MySnapZone: {fileID: 27796836}
@@ -3073,7 +3076,7 @@ Transform:
   m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &529065896
 GameObject:
@@ -3551,6 +3554,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   snapFlag: 0
+  snapOrderObjects: []
   snapZones:
   - {fileID: 2145963157}
   - {fileID: 1638528382}
@@ -4295,7 +4299,7 @@ Transform:
   - {fileID: 674296139}
   - {fileID: 674296149}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &674296131
 Transform:
@@ -6319,7 +6323,7 @@ Transform:
   - {fileID: 351219263}
   - {fileID: 5174145443176837417}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &781941884
 GameObject:
@@ -6725,6 +6729,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   snapFlag: 1
+  snapOrderObjects: []
   snapZones:
   - {fileID: 946344080}
   MySnapZone: {fileID: 0}
@@ -7044,6 +7049,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   snapFlag: 0
+  snapOrderObjects: []
   snapZones:
   - {fileID: 27796836}
   MySnapZone: {fileID: 1996215711}
@@ -7220,6 +7226,7 @@ MonoBehaviour:
   displayDropZoneInEditor: 1
   defaultSnappedInteractableObject: {fileID: 0}
   defaultSnappedObject: {fileID: 0}
+  isSnapped2: 0
 --- !u!135 &946344084
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -7936,7 +7943,7 @@ Transform:
   - {fileID: 8907951156252503935}
   - {fileID: 5362610599579266938}
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1073524162
 GameObject:
@@ -8705,7 +8712,7 @@ Transform:
   - {fileID: 1174678538}
   - {fileID: 1043355003}
   m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1289797225
 GameObject:
@@ -8948,7 +8955,7 @@ Transform:
   - {fileID: 4000011796979343}
   - {fileID: 828248321}
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1340304664
 MonoBehaviour:
@@ -9056,7 +9063,7 @@ Transform:
   m_Children:
   - {fileID: 1725081417}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1364546624
 GameObject:
@@ -9529,7 +9536,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1439825938
 GameObject:
@@ -10258,6 +10265,7 @@ MonoBehaviour:
   displayDropZoneInEditor: 1
   defaultSnappedInteractableObject: {fileID: 0}
   defaultSnappedObject: {fileID: 0}
+  isSnapped2: 0
 --- !u!135 &1612579623
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -10379,7 +10387,7 @@ Transform:
   - {fileID: 1874066949}
   - {fileID: 2105470444}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1638528382
 GameObject:
@@ -10456,6 +10464,7 @@ MonoBehaviour:
   displayDropZoneInEditor: 1
   defaultSnappedInteractableObject: {fileID: 0}
   defaultSnappedObject: {fileID: 0}
+  isSnapped2: 0
 --- !u!135 &1638528386
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -10783,6 +10792,7 @@ MonoBehaviour:
   displayDropZoneInEditor: 1
   defaultSnappedInteractableObject: {fileID: 0}
   defaultSnappedObject: {fileID: 0}
+  isSnapped2: 0
 --- !u!135 &1694200341
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -10870,6 +10880,7 @@ MonoBehaviour:
   displayDropZoneInEditor: 1
   defaultSnappedInteractableObject: {fileID: 0}
   defaultSnappedObject: {fileID: 0}
+  isSnapped2: 0
 --- !u!135 &1725081420
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -12884,6 +12895,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   snapFlag: 0
+  snapOrderObjects: []
   snapZones:
   - {fileID: 1694200337}
   MySnapZone: {fileID: 2073526267}
@@ -13712,6 +13724,7 @@ MonoBehaviour:
   displayDropZoneInEditor: 1
   defaultSnappedInteractableObject: {fileID: 0}
   defaultSnappedObject: {fileID: 0}
+  isSnapped2: 0
 --- !u!135 &1996215715
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -13897,6 +13910,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   snapFlag: 0
+  snapOrderObjects: []
   snapZones: []
   MySnapZone: {fileID: 0}
 --- !u!54 &2026657183
@@ -14281,6 +14295,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   snapFlag: 0
+  snapOrderObjects: []
   snapZones:
   - {fileID: 1694200337}
   - {fileID: 1996215711}
@@ -14468,6 +14483,7 @@ MonoBehaviour:
   displayDropZoneInEditor: 1
   defaultSnappedInteractableObject: {fileID: 0}
   defaultSnappedObject: {fileID: 0}
+  isSnapped2: 0
 --- !u!135 &2073526271
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -14864,6 +14880,7 @@ MonoBehaviour:
   displayDropZoneInEditor: 1
   defaultSnappedInteractableObject: {fileID: 0}
   defaultSnappedObject: {fileID: 0}
+  isSnapped2: 0
 --- !u!135 &2145963161
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -23598,7 +23615,7 @@ Transform:
   - {fileID: 1254300668}
   - {fileID: 1073524164}
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1817645716585768382
 PrefabInstance:
@@ -23806,7 +23823,7 @@ Transform:
   - {fileID: 4859929600544441221}
   - {fileID: 4859929600544441243}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4859929600544441243
 Transform:
