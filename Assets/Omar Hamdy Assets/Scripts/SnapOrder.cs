@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using VRTK;
 
 #region SnapOrder's SnapOrderFlag  Enum
 
@@ -28,14 +29,18 @@ public class SnapOrder : MonoBehaviour
     [Tooltip("The snap flag of this snappable object that indecates whether it is (SNAPPED) to its snap zone or not -> (INTERACTABLE). \nUsage: readonly \nRequired: False")]
     public          SnapOrderFlag           snapFlag;                       //The snap flag of the current object 
 
-    [Tooltip("Here you must insert all the snappable objects in ordered their right order (Snap Order List), will be ordered according to the insertion order. \nRequired: true")]
-    public          List<SnapOrder>         snapOrderObjects;               //Snap objects list that retain the order of the snapping
+    [Tooltip("A reference to a generic script that holds the whole chain infromation and events.\nRequired: true")]
+    SnapOrderManager snapOrderManager;                                      //The manager that holds each snap order script in the chain and retains the order of it.
 
     [Tooltip("Here you must insert all the snap zones of the next object(s) in the snap order list \nRequired: true")]
     public          List<GameObject>        snapZones;                      //The snap zones of the objects that supposed to be snapped to this snappable object.
 
     [Tooltip("Here you must insert the snap zone of the \nRequired: true")]
     public          GameObject              MySnapZone;                     //The snap zone that this snappable object suppose to be snapped to.
+
+    VRTK_SnapDropZone thisRingSnapZone;
+    SnapDropZoneEventHandler OnSnap;
+    SnapDropZoneEventHandler OnUnSnap;
 
     #endregion
 
@@ -50,8 +55,10 @@ public class SnapOrder : MonoBehaviour
     {
         snapFlag = SnapOrderFlag.INTERACTABLE;                              //Inialize the snap flag with interactable;
         thisCollider = GetComponent<Collider>();                            //Get this object's collider
+        snapOrderManager = GetComponentInParent<SnapOrderManager>();
+
         SwitchSnapAreasOff();                                               //Switch off all snap areas 
-        AssemblyBase = snapOrderObjects[0];                                 //Get the first snappable object in the list to be tha base.
+        AssemblyBase = snapOrderManager.snapOrderObjects[0];                //Get the first snappable object in the list to be tha base.
         AssemblyBase.SwitchSnapAreasOn();                                   //Switch the snappable objects' base object's snap areas on.
     }
 
@@ -85,13 +92,13 @@ public class SnapOrder : MonoBehaviour
             //Mark the flag of the snappable object to be SNAPPED
             snapFlag = SnapOrderFlag.SNAPPED;
            
-            int thisSnapOrderIndex = snapOrderObjects.IndexOf(this);
-           
+            int thisSnapOrderIndex = snapOrderManager.snapOrderObjects.IndexOf(this);
+            snapOrderManager.currentRingIndex = thisSnapOrderIndex;
             //Check if the previous snappable object in the list is not the base snappable object
-            if (snapOrderObjects[thisSnapOrderIndex - 1] != AssemblyBase)
+            if (snapOrderManager.snapOrderObjects[thisSnapOrderIndex - 1] != AssemblyBase)
             {
                 //if the previous snappable object in the list is not the base then disable its collider in order to be still
-                snapOrderObjects[thisSnapOrderIndex - 1].thisCollider.enabled = false;
+                snapOrderManager.snapOrderObjects[thisSnapOrderIndex - 1].thisCollider.enabled = false;
             }
 
             //Turn off the collider of the snap zone of this snappable object in order to avoid colliders conflects.
@@ -114,13 +121,14 @@ public class SnapOrder : MonoBehaviour
             //Mark the flag of the snappable object to be INTERACTABLE
             snapFlag = SnapOrderFlag.INTERACTABLE;
 
-            int thisSnapOrderIndex = snapOrderObjects.IndexOf(this);
+            int thisSnapOrderIndex = snapOrderManager.snapOrderObjects.IndexOf(this);
+            snapOrderManager.currentRingIndex = thisSnapOrderIndex;
 
             //Check if the previous snappable object in the list is not the base snappable object
-            if (snapOrderObjects[thisSnapOrderIndex - 1] != AssemblyBase)
+            if (snapOrderManager.snapOrderObjects[thisSnapOrderIndex - 1] != AssemblyBase)
             {
                 //if the previous snappable object in the list is not the base then enable its collider in order to be still
-                snapOrderObjects[thisSnapOrderIndex - 1].thisCollider.enabled = true;
+                snapOrderManager.snapOrderObjects[thisSnapOrderIndex - 1].thisCollider.enabled = true;
             }
           
             //Turn on the collider of the snap zone of this snappable object in order to be able to snap this snappable object again.
