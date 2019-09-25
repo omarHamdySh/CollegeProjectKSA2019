@@ -9,6 +9,7 @@ public class UI_VR_Handler : MonoBehaviour
     public GameObject weaponObject;
 
     UI_VR_Handler[] SwitchWeaponBtnsHandlers;
+    
     public int highlightTimeThreshold = 3;
     float seconds;
 
