@@ -9,7 +9,8 @@ public class UI_VR_Handler : MonoBehaviour
     public GameObject weaponObject;
 
     UI_VR_Handler[] SwitchWeaponBtnsHandlers;
-    
+    public GameObject globalLaserSourcePosition;
+    public GameObject localLaserSourcePosition;
     public int highlightTimeThreshold = 3;
     float seconds;
 
@@ -27,7 +28,9 @@ public class UI_VR_Handler : MonoBehaviour
         CheckForSelectionThreshold();
     }
 
-    public void countSeconds() {
+    public void countSeconds()
+    {
+
         if (Vrscript.enabled)
         {
             seconds += Time.deltaTime;
@@ -39,13 +42,15 @@ public class UI_VR_Handler : MonoBehaviour
         {
             seconds = 0;
             weaponObject.SetActive(true);
+            globalLaserSourcePosition.transform.position = localLaserSourcePosition.transform.position;
             turnOffOtherWeapons();
         }
     }
 
-    private void turnOffOtherWeapons(){
+    private void turnOffOtherWeapons()
+    {
 
-        if (SwitchWeaponBtnsHandlers != null) 
+        if (SwitchWeaponBtnsHandlers != null)
         {
             foreach (var script in SwitchWeaponBtnsHandlers)
             {
