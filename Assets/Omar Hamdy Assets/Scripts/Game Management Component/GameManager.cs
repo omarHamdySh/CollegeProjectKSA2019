@@ -6,6 +6,7 @@ using VRTK;
 using TMPro;
 using UnityEngine.UI;
 
+
 public class GameManager : MonoBehaviour
 {
     private static GameManager _Instance;                               //reference for this script to access it from another place to manage/control his variables and function
