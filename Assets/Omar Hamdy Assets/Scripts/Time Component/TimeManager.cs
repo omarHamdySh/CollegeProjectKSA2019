@@ -112,28 +112,19 @@ public class GameTime : ICloneable
 
     public void OnSecondChange()
     {//Called each real second
-        #region Deprecated
-        //GameManager.Instance.OnSecondChange();
-        #endregion
+        GameManager.Instance.OnSecondChange();
     }
     public void OnMinuteChange()
     {//Called each real Minute
-        #region Deprecated
-        //GameManager.Instance.OnMinuteChange();
-        #endregion
+        GameManager.Instance.OnMinuteChange();
     }
     public void OnGameHourChange()
     {//Called each Game Hour
-        #region Deprecated
-
-        //GameManager.Instance.OnGameHourChange();
-        #endregion
+        GameManager.Instance.OnGameHourChange();
     }
     public void OnGameDayChange()
     {// Called each Game Day
-        #region Deprecated
-        //GameManager.Instance.OnGameDayChange();
-        #endregion
+        GameManager.Instance.OnGameDayChange();
     }
     #endregion
 
@@ -259,7 +250,8 @@ public class TimeManager : MonoBehaviour
     [HideInInspector]
     public bool isUpdating;
     public List<EventsTime> eventsTime = new List<EventsTime>();
-    private void Awake()
+
+    private void Start()
     {
         gameTime = new GameTime(TotalGameDays);
         if (GameManager.Instance.isTesting)

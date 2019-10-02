@@ -18,6 +18,7 @@ public class SceneMappingManager : MonoBehaviour
     public static SceneMappingManager Instance                             //Getter Method.
     {
         get { return _Instance; }
+
     }
     private void Awake()
     {

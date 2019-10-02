@@ -17,6 +17,7 @@ public class StateTransition : IGameplayState
 
     public void OnStateEnter()
     {
+        GameManager.Instance.OnTransitionHaveToEnd += ExitTransition;
     }
     /// <summary>
     /// Logic of exiting the state goes here.
@@ -28,60 +29,201 @@ public class StateTransition : IGameplayState
     {
     }
 
-    public void OnStateUpdate()
+    public bool ExitTransition(IGameplayState otherState)
+    {
+        if (otherState != null)
+        {
+            if (otherState != gameplayFSMManager.tempTransitionTo)
+            {
+                ExitToAnotherState(otherState);
+                return true;
+            }
+            else if (otherState == gameplayFSMManager.tempTransitionTo)
+            {
+                ExitToTheSameState();
+                return true;
+            }
+        }
+        else
+        {
+            ExitToTheSameState();
+            return true;
+        }
+        return false;
+    }
+    public void printSelfMappingError(GameplayState backTo)
+    {
+        if (gameplayFSMManager.hintTxt)
+        {
+            gameplayFSMManager.hintTxt.text = "Error You are mapping to the same sate";
+            gameplayFSMManager.hintTxt.color = Color.red;
+            gameplayFSMManager.hintTxt.enabled = true;
+
+            gameplayFSMManager.changeToAState(backTo);
+        }
+    }
+
+    public void ExitToTheSameState()
     {
         ////Map to according to the transitionDirection
-        //switch (gameplayFSMManager.transitionDirection)
-        //{
-        //    case StateTransitionDirection.WashingToFighting:
-        //        //if there are any clues for the washing process like some paste on the teeth or some effect is still working don't do anything.
-        //        //else if there is nothing and everything is clean -> change to the intended state.
-        //        if (GameManager.Instance.DirtyTeeth.Count == 0)
-        //        {
-        //            //AudioSource source = TutorialManager.Instance.EntitiesQueue.Peek().gameObject.GetComponent<AudioSource>();
-        //            //TutorialManager.Instance.PlayNextSequence();
-        //            //if (!source.isPlaying)
-        //            //{
-        //            //this mean he clean all the teeth
-        //            TutorialManager.Instance.PlayNextSequence();
-        //            gameplayFSMManager.ChangeToFighting();
-        //            gameplayFSMManager.PushState(gameplayFSMManager.fightingState);
-        //            //}
-        //        }
-        //        break;
-        //    case StateTransitionDirection.FightingToWashing:
-        //        //if there is any enemy alive wait unil he dies.
-        //        //else if there is no enemy alive and everything is clean -> change to the intended state.
-        //        GameManager.Instance.enableFightingTools();
-        //        if (GameManager.Instance.enemyObjects.All(e1 => e1 == null))
-        //        {
-        //            TutorialManager.Instance.PlayNextSequence();
-        //            gameplayFSMManager.PushState(gameplayFSMManager.washingState);
-        //            GameManager.Instance.disableFightingTools();
-        //        }
-        //        break;
-        //    case StateTransitionDirection.WashingToPause:
-        //        //if the player click the pause menu and he/she in the washing state
-        //        if (GameManager.Instance.DirtyTeeth.Count == 0)
-        //        {
-        //            //this mean he clean all the teeth
-        //            gameplayFSMManager.ChangeToFighting();
-        //            gameplayFSMManager.PushState(gameplayFSMManager.fightingState);
-        //        }
-        //        break;
-        //    case StateTransitionDirection.PauseToWashing:
-        //        //if the player click the resume menu and back to game again but he/she was in the washing state
-        //        gameplayFSMManager.PushState(gameplayFSMManager.washingState);
-        //        break;
-        //    case StateTransitionDirection.FightingToPause:
-        //        //if the player click the pause menu and he/she in the fighting state
-        //        GameManager.Instance.enemySpawingPointManager.SetActive(false);
-        //        break;
-        //    case StateTransitionDirection.PauseToFighting:
-        //        //if the player click the resume menu and back to game again but he/she was in the fighting state
-        //        GameManager.Instance.enableFightingTools();
-        //        break;
-        //}
+        switch (gameplayFSMManager.tempTransitionFrom.GetState())
+        {
+            case GameplayState.Tutorial:
+                switch (gameplayFSMManager.tempTransitionTo.GetState())
+                {
+                    case GameplayState.Tutorial:
+                        printSelfMappingError(GameplayState.Tutorial);
+                        break;
+                    case GameplayState.AssemblyDisassembly:
+                        gameplayFSMManager.toAssemblyDisassembly();
+                        break;
+                    case GameplayState.AssemblyDisassemblyTutorial:
+                        gameplayFSMManager.toAssemblyDisassemblyTutorial();
+                        break;
+                    case GameplayState.Shooting:
+                        gameplayFSMManager.toSooting();
+                        break;
+                    case GameplayState.Testing:
+                        gameplayFSMManager.toTesting();
+                        break;
+                    case GameplayState.Pause:
+                        gameplayFSMManager.pauseGame();
+                        break;
+                }
+                break;
+            case GameplayState.AssemblyDisassembly:
+                switch (gameplayFSMManager.tempTransitionTo.GetState())
+                {
+                    case GameplayState.Tutorial:
+                        gameplayFSMManager.toTutorial();
+                        break;
+                    case GameplayState.AssemblyDisassembly:
+                        printSelfMappingError(GameplayState.AssemblyDisassembly);
+                        break;
+                    case GameplayState.AssemblyDisassemblyTutorial:
+                        gameplayFSMManager.toAssemblyDisassemblyTutorial();
+                        break;
+                    case GameplayState.Shooting:
+                        gameplayFSMManager.toSooting();
+                        break;
+                    case GameplayState.Testing:
+                        gameplayFSMManager.toTesting();
+                        break;
+                    case GameplayState.Pause:
+                        gameplayFSMManager.pauseGame();
+                        break;
+                }
+                break;
+            case GameplayState.AssemblyDisassemblyTutorial:
+                switch (gameplayFSMManager.tempTransitionTo.GetState())
+                {
+                    case GameplayState.Tutorial:
+                        gameplayFSMManager.toTutorial();
+                        break;
+                    case GameplayState.AssemblyDisassembly:
+                        gameplayFSMManager.toAssemblyDisassembly();
+                        break;
+                    case GameplayState.AssemblyDisassemblyTutorial:
+                        printSelfMappingError(GameplayState.AssemblyDisassemblyTutorial);
+                        break;
+                    case GameplayState.Shooting:
+                        gameplayFSMManager.toSooting();
+                        break;
+                    case GameplayState.Testing:
+                        gameplayFSMManager.toTesting();
+                        break;
+                    case GameplayState.Pause:
+                        gameplayFSMManager.pauseGame();
+                        break;
+                }
+                break;
+            case GameplayState.Shooting:
+                switch (gameplayFSMManager.tempTransitionTo.GetState())
+                {
+                    case GameplayState.Tutorial:
+                        gameplayFSMManager.toTutorial();
+                        break;
+                    case GameplayState.AssemblyDisassembly:
+                        gameplayFSMManager.toAssemblyDisassembly();
+                        break;
+                    case GameplayState.AssemblyDisassemblyTutorial:
+                        gameplayFSMManager.toAssemblyDisassemblyTutorial();
+                        break;
+                    case GameplayState.Shooting:
+                        printSelfMappingError(GameplayState.Shooting);
+                        break;
+                    case GameplayState.Testing:
+                        gameplayFSMManager.toTesting();
+                        break;
+                    case GameplayState.Pause:
+                        gameplayFSMManager.pauseGame();
+                        break;
+                }
+                break;
+            case GameplayState.Testing:
+                switch (gameplayFSMManager.tempTransitionTo.GetState())
+                {
+                    case GameplayState.Tutorial:
+                        gameplayFSMManager.toTutorial();
+                        break;
+                    case GameplayState.AssemblyDisassembly:
+                        gameplayFSMManager.toAssemblyDisassembly();
+                        break;
+                    case GameplayState.AssemblyDisassemblyTutorial:
+                        gameplayFSMManager.toAssemblyDisassemblyTutorial();
+                        break;
+                    case GameplayState.Shooting:
+                        gameplayFSMManager.toSooting();
+                        break;
+                    case GameplayState.Testing:
+                        printSelfMappingError(GameplayState.Testing);
+                        break;
+                    case GameplayState.Pause:
+                        gameplayFSMManager.pauseGame();
+                        break;
+                }
+                break;
+            case GameplayState.Pause:
+                switch (gameplayFSMManager.tempTransitionTo.GetState())
+                {
+                    case GameplayState.Tutorial:
+                        gameplayFSMManager.toTutorial();
+                        break;
+                    case GameplayState.AssemblyDisassembly:
+                        gameplayFSMManager.toAssemblyDisassembly();
+                        break;
+                    case GameplayState.AssemblyDisassemblyTutorial:
+                        gameplayFSMManager.toAssemblyDisassemblyTutorial();
+                        break;
+                    case GameplayState.Shooting:
+                        gameplayFSMManager.toSooting();
+                        break;
+                    case GameplayState.Testing:
+                        gameplayFSMManager.toTesting();
+                        break;
+                    case GameplayState.Pause:
+                        printSelfMappingError(GameplayState.Pause);
+                        break;
+                }
+                break;
+            default:
+                break;
+        }
+    }
+    public void ExitToAnotherState(IGameplayState otherState)
+    {
+        gameplayFSMManager.tempTransitionTo = otherState;
+        ////Map to according to the transitionDirection
+        /**
+         * You can copy the ExitToTheSameState() method and edit it.
+         * You can use methods that changes the state with transion if 
+         * needed or do what ever you want.
+         * **/
+        ExitToTheSameState();
+    }
+    public void OnStateUpdate()
+    {
+
     }
     string ToString()
     {
