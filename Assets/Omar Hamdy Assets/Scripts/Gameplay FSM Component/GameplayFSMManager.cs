@@ -12,9 +12,12 @@ using UnityEngine;
 /// </summary>
 public enum GameplayState
 {
+    Tutorial,
+    AssemblyDisassembly,
+    AssemblyDisassemblyTutorial,
+    Shooting,
+    Testing,
     Transition,
-    Washing,
-    Fighting,
     Pause
 }
 /// <summary>
@@ -50,10 +53,17 @@ public class GameplayFSMManager : MonoBehaviour
     /// <summary>
     /// Declaration of states Instances goes here.
     /// </summary>
+
     [HideInInspector]
-    public WashingState washingState;
+    public AssemblyDissassemblyState assemblyDissassemblyState;
     [HideInInspector]
-    public FightingState fightingState;
+    public AssemblyDisAssemblyTutorialState assemblyDisAssemblyTutorialState;
+    [HideInInspector]
+    public ShootingState shootingState;
+    [HideInInspector]
+    public TestingState testingState;
+    [HideInInspector]
+    public TutorialState tutorialState;
     [HideInInspector]
     public StateTransition stateTransition;
     [HideInInspector]
@@ -88,25 +98,43 @@ public class GameplayFSMManager : MonoBehaviour
         /// </summary>
 
         ////Instantiate the first state
-        fightingState = new FightingState()
+        assemblyDissassemblyState = new AssemblyDissassemblyState()
         {
             gameplayFSMManager = this
         };
-        stateTransition = new StateTransition()
+
+        assemblyDisAssemblyTutorialState = new AssemblyDisAssemblyTutorialState()
         {
             gameplayFSMManager = this
         };
-        washingState = new WashingState()
+
+        shootingState = new ShootingState()
         {
             gameplayFSMManager = this
         };
+
+        testingState = new TestingState()
+        {
+            gameplayFSMManager = this
+        };
+
+        tutorialState = new TutorialState()
+        {
+            gameplayFSMManager = this
+        };
+
         pauseState = new PauseState()
         {
             gameplayFSMManager = this
         };
 
+        stateTransition = new StateTransition()
+        {
+            gameplayFSMManager = this
+        };
+
         //push the first state for the player
-        PushState(pauseState);
+        PushState(tutorialState);
     }
 
     // Update is called once per frame
@@ -143,74 +171,157 @@ public class GameplayFSMManager : MonoBehaviour
     /// </param>
     public void DetermineStateTransationDirection(IGameplayState nextState)
     {
-        //switch (stateStack.Peek().GetState())
-        //{
-        //    case GameplayState.Washing:
-        //        switch (nextState.GetState())
-        //        {
-        //            case GameplayState.Fighting:
-        //                transitionDirection = StateTransitionDirection.WashingToFighting;
-        //                break;
-        //            case GameplayState.Pause:
-        //                transitionDirection = StateTransitionDirection.WashingToPause;
-        //                break;
-        //            default:
-        //                break;
-        //        }
-        //        break;
-        //    case GameplayState.Fighting:
-        //        switch (nextState.GetState())
-        //        {
-        //            case GameplayState.Washing:
-        //                transitionDirection = StateTransitionDirection.FightingToWashing;
-        //                break;
-        //            case GameplayState.Pause:
-        //                transitionDirection = StateTransitionDirection.FightingToPause;
-        //                break;
-        //            default:
-        //                break;
-        //        }
-        //        break;
-        //    case GameplayState.Pause:
-        //        switch (nextState.GetState())
-        //        {
-        //            case GameplayState.Washing:
-        //                transitionDirection = StateTransitionDirection.PauseToWashing;
-        //                break;
-        //            case GameplayState.Fighting:
-        //                transitionDirection = StateTransitionDirection.PauseToFighting;
-        //                break;
-        //            default:
-        //                break;
-        //        }
-        //        break;
-        //    default:
-        //        break;
-        //}
+        switch (stateStack.Peek().GetState())
+        {
+            case GameplayState.Tutorial:
+                switch (nextState.GetState())
+                {
+                    case GameplayState.Tutorial:
+                        //Error You are mapping to the same sate
+                        break;
+                    case GameplayState.AssemblyDisassembly:
+                        break;
+                    case GameplayState.AssemblyDisassemblyTutorial:
+                        break;
+                    case GameplayState.Shooting:
+                        break;
+                    case GameplayState.Testing:
+                        break;
+                    case GameplayState.Transition:
+                        break;
+                    case GameplayState.Pause:
+                        break;
+                }
+                break;
+            case GameplayState.AssemblyDisassembly:
+                switch (nextState.GetState())
+                {
+                    case GameplayState.Tutorial:
+                        break;
+                    case GameplayState.AssemblyDisassembly:
+                        //Error You are mapping to the same sate
+                        break;
+                    case GameplayState.AssemblyDisassemblyTutorial:
+                        break;
+                    case GameplayState.Shooting:
+                        break;
+                    case GameplayState.Testing:
+                        break;
+                    case GameplayState.Pause:
+                        break;
+                }
+                break;
+            case GameplayState.AssemblyDisassemblyTutorial:
+                switch (nextState.GetState())
+                {
+                    case GameplayState.Tutorial:
+                        break;
+                    case GameplayState.AssemblyDisassembly:
+                        break;
+                    case GameplayState.AssemblyDisassemblyTutorial:
+                        //Error You are mapping to the same sate
+                        break;
+                    case GameplayState.Shooting:
+                        break;
+                    case GameplayState.Testing:
+                        break;
+                    case GameplayState.Pause:
+                        break;
+                }
+                break;
+            case GameplayState.Shooting:
+                switch (nextState.GetState())
+                {
+                    case GameplayState.Tutorial:
+                        break;
+                    case GameplayState.AssemblyDisassembly:
+                        break;
+                    case GameplayState.AssemblyDisassemblyTutorial:
+                        break;
+                    case GameplayState.Shooting:
+                        //Error You are mapping to the same sate
+                        break;
+                    case GameplayState.Testing:
+                        break;
+                    case GameplayState.Pause:
+                        break;
+                }
+                break;
+            case GameplayState.Testing:
+                switch (nextState.GetState())
+                {
+                    case GameplayState.Tutorial:
+                        break;
+                    case GameplayState.AssemblyDisassembly:
+                        break;
+                    case GameplayState.AssemblyDisassemblyTutorial:
+                        break;
+                    case GameplayState.Shooting:
+                        break;
+                    case GameplayState.Testing:
+                        //Error You are mapping to the same sate
+                        break;
+                    case GameplayState.Pause:
+                        break;
+                }
+                break;
+            case GameplayState.Pause:
+                switch (nextState.GetState())
+                {
+                    case GameplayState.Tutorial:
+                        break;
+                    case GameplayState.AssemblyDisassembly:
+                        break;
+                    case GameplayState.AssemblyDisassemblyTutorial:
+                        break;
+                    case GameplayState.Shooting:
+                        break;
+                    case GameplayState.Testing:
+                        break;
+                    case GameplayState.Pause:
+                        //Error You are mapping to the same sate
+                        break;
+                }
+                break;
+            default:
+                break;
+        }
     }
-    
+
     /// <summary>
     /// functions to defining how changing the gameplay state
     /// </summary>
-    public void ChangeToWashing()
+    public void toTutorial()
     {
-        DetermineStateTransationDirection(washingState);
+        DetermineStateTransationDirection(tutorialState);
         PopState();
         PushState(stateTransition);
     }
-    public void ChangeToFighting()
-    {
-        DetermineStateTransationDirection(fightingState);
-        PopState();
-        PushState(stateTransition);
+    public void toSooting() {
 
-    }
-    public void ChangeToPause()
-    {
-        DetermineStateTransationDirection(pauseState);
+        DetermineStateTransationDirection(shootingState);
         PopState();
         PushState(stateTransition);
     }
+    public void toTesting()
+    {
+        DetermineStateTransationDirection(testingState);
+        PopState();
+        PushState(stateTransition);
+    }
+    public void toAssemblyDisassembly()
+    {
+        DetermineStateTransationDirection(assemblyDissassemblyState);
+        PopState();
+        PushState(stateTransition);
+    }
+    public void toAssemblyDisassemblyTutorial()
+    {
+        DetermineStateTransationDirection(assemblyDisAssemblyTutorialState);
+        PopState();
+        PushState(stateTransition);
+    }
+
     public void pauseGame()
     {
         if (tempFromPause == null)

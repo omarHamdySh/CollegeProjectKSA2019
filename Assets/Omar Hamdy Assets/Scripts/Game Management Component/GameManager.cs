@@ -59,6 +59,13 @@ public class GameManager : MonoBehaviour
         #endregion
     }
 
+    public void resetGame() {
+
+    }
+
+    public void proceedTransition() {
+
+    }
 
 
     #region Deprecated Leveling code
