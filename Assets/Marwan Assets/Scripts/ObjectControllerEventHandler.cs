@@ -1,7 +1,11 @@
 ﻿namespace VRTK.Examples
 {
     using UnityEngine;
-
+    /// <summary>
+    /// Event payload
+    /// </summary>
+    /// <param name="timeUnitValue"></param>
+    public delegate void TimeEvents(float timeUnitValue);
     public class ObjectControllerEventHandler : MonoBehaviour
     {
         [HideInInspector]

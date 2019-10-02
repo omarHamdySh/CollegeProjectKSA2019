@@ -6,16 +6,32 @@ using VRTK;
 using TMPro;
 using UnityEngine.UI;
 
+/// <summary>
+/// Event payload
+/// </summary>
+/// <param name="timeUnitValue"></param>
+public delegate void TimeEvents(float timeUnitValue);
+public delegate bool GamePlayStatesEvents(IGameplayState otherState);
+
 public class GameManager : MonoBehaviour
 {
     private static GameManager _Instance;                               //reference for this script to access it from another place to manage/control his variables and function
+    public event TimeEvents OnRealSecondChanged;
+    public event TimeEvents OnRealMinuteChanged;
+    public event TimeEvents OnGameHourChanged;
+    public event TimeEvents OnGameDayChanged;
 
+    public GamePlayStatesEvents OnTransitionHaveToEnd;
+
+    public TimeManager timeManager;
     public GameplayFSMManager gameplayFSMManager;                       //reference for the state machine controller to access his state
+    //LevelManager
     public bool isTesting;
 
     public static GameManager Instance
     {
         get { return _Instance; }
+
     }
     private void Awake()
     {
@@ -25,9 +41,7 @@ public class GameManager : MonoBehaviour
             _Instance = this;
         }
         DontDestroyOnLoad(this.gameObject);
-
     }
-
 
 
 
@@ -36,6 +50,7 @@ public class GameManager : MonoBehaviour
     /// </summary>
     public void PauseGame()
     {
+        gameplayFSMManager.pauseGame();
         #region --deperacted Code
         ///
         /// this code make all scene the scene stop and also the controller functionality
@@ -50,7 +65,7 @@ public class GameManager : MonoBehaviour
     /// </summary>
     public void ResumeGame()
     {
-
+        gameplayFSMManager.resumeGame();
         #region --deperacted Code
         ///
         /// this code make all scene the scene stop and also the controller functionality
@@ -59,12 +74,51 @@ public class GameManager : MonoBehaviour
         #endregion
     }
 
-    public void resetGame() {
+    public void resetGame()
+    {
 
     }
 
-    public void proceedTransition() {
+    public void proceedTransition()
+    {
+        PauseState nullObj = null;
+        bool result=  OnTransitionHaveToEnd(nullObj);
 
+        if (result)
+        {
+            StartCoroutine(turnOfStateFSMHit());
+        }
+
+    }
+
+    IEnumerator turnOfStateFSMHit() {
+        yield return new WaitForSeconds(3);
+        if (gameplayFSMManager.hintTxt.enabled)
+        {
+            gameplayFSMManager.hintTxt.enabled = false;
+            gameplayFSMManager.hintTxt.text = "";
+            gameplayFSMManager.hintTxt.color = Color.white;
+        }
+    }
+
+    public void OnSecondChange()
+    {
+        OnRealSecondChanged(timeManager.gameTime.realSecond);
+    }
+
+    public void OnMinuteChange()
+    {
+        OnRealMinuteChanged(timeManager.gameTime.realMinute);
+    }
+
+    public void OnGameDayChange()
+    {
+        OnGameDayChanged(timeManager.gameTime.gameDay);
+    }
+
+    internal void OnGameHourChange()
+    {
+        OnGameHourChanged(timeManager.gameTime.gameHour);
     }
 
 
