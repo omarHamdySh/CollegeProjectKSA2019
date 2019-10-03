@@ -1302,11 +1302,6 @@ MonoBehaviour:
     realSecond: 0
     realMinute: 0
     realHour: 0
-    totalGameDays: 0
-    secondTemp: 0
-    minuteTemp: 0
-    gameHourTemp: 0
-    gameDayTemp: 0
   isUpdating: 0
   eventsTime: []
 --- !u!1 &1122559419
