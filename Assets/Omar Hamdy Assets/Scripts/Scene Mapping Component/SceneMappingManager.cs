@@ -38,6 +38,7 @@ public class SceneMappingManager : MonoBehaviour
     public void changeScene(SceneName sceneName)
     {
         SceneManager.LoadScene(sceneName.ToString());
+
     }
     public void changeScene()
     {

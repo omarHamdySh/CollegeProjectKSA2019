@@ -2,9 +2,17 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using TMPro;
 using UnityEngine.UI;
+public enum GameItemName
+{
+    MK2 = 1,
+    _9MM = 2,
+    G36 = 3,
+    MP5 = 4,
 
+}
 /// <summary>
 /// Event payload
 /// </summary>
@@ -24,6 +32,7 @@ public class GameManager : MonoBehaviour
 
     public TimeManager timeManager;
     public GameplayFSMManager gameplayFSMManager;                       //reference for the state machine controller to access his state
+    public ItemsSwitcher[] itemsSwitchers;
     //LevelManager
     public bool isTesting;
 
@@ -42,7 +51,11 @@ public class GameManager : MonoBehaviour
         DontDestroyOnLoad(this.gameObject);
     }
 
-
+    private void Start()
+    {
+        OnSceneLoad();
+        SceneManager.sceneLoaded += delegate { OnSceneLoad(); };
+    }
 
     /// <summary>
     /// function to pause the scene and all the live scripts in the scene
@@ -120,7 +133,16 @@ public class GameManager : MonoBehaviour
         OnGameHourChanged(timeManager.gameTime.gameHour);
     }
 
+    public void switchGameItemTo(int itemNo) {
+        foreach (var itemSwitcher in itemsSwitchers)
+        {
+            itemSwitcher.switchTo(itemNo);
+        }
+    }
 
+    public void OnSceneLoad() {
+        itemsSwitchers = FindObjectsOfType<ItemsSwitcher>();
+    }
     #region Deprecated Leveling code
     /**
     public enum GameLevel {//Must be declared out of the class;

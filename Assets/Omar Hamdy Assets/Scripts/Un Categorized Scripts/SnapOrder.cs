@@ -28,12 +28,15 @@ public class SnapOrder : MonoBehaviour
     [Tooltip("The snap flag of this snappable object that indecates whether it is (SNAPPED) to its snap zone or not -> (INTERACTABLE). \nUsage: readonly \nRequired: False")]
     public          SnapOrderFlag           snapFlag;                       //The snap flag of the current object 
 
+    [Header("All Parts' Snap Order Scripts")]
     [Tooltip("Here you must insert all the snappable objects in ordered their right order (Snap Order List), will be ordered according to the insertion order. \nRequired: true")]
     public          List<SnapOrder>         snapOrderObjects;               //Snap objects list that retain the order of the snapping
 
+    [Header("The Snap Zone(s) of the next part(s)")]
     [Tooltip("Here you must insert all the snap zones of the next object(s) in the snap order list \nRequired: true")]
     public          List<GameObject>        snapZones;                      //The snap zones of the objects that supposed to be snapped to this snappable object.
 
+    [Header("The Snap Zone of this part")]
     [Tooltip("Here you must insert the snap zone of the \nRequired: true")]
     public          GameObject              MySnapZone;                     //The snap zone that this snappable object suppose to be snapped to.
 
