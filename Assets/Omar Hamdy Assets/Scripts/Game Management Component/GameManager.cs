@@ -32,6 +32,7 @@ public class GameManager : MonoBehaviour
 
     public TimeManager timeManager;
     public GameplayFSMManager gameplayFSMManager;                       //reference for the state machine controller to access his state
+    [HideInInspector]
     public ItemsSwitcher[] itemsSwitchers;
     //LevelManager
     public bool isTesting;
@@ -139,9 +140,13 @@ public class GameManager : MonoBehaviour
             itemSwitcher.switchTo(itemNo);
         }
     }
-
+    /// <summary>
+    ///     Check which game play it is, and position the player at that position.
+    ///     Also change the weapon item according to the player choice
+    /// </summary>
     public void OnSceneLoad() {
         itemsSwitchers = FindObjectsOfType<ItemsSwitcher>();
+
     }
     #region Deprecated Leveling code
     /**

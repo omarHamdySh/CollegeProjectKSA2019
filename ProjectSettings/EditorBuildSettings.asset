@@ -12,7 +12,7 @@ EditorBuildSettings:
     path: Assets/Scenes/GunScene 1.unity
     guid: 57d736cd216a7a3418f10ddc64e5202f
   - enabled: 1
-    path: Assets/Scenes/GunScene 2.unity
+    path: Assets/Scenes/ShootingScene.unity
     guid: 1364b7ef3289fdd41825dc21299570d0
   - enabled: 1
     path: Assets/Scenes/GranedeScene.unity
@@ -21,6 +21,6 @@ EditorBuildSettings:
     path: Assets/Scenes/VRTutorial.unity
     guid: ad6a970f8f346284c95165833d91c248
   - enabled: 1
-    path: Assets/Scenes/Full Bomb Assembly & DesAssembly.unity
+    path: Assets/Scenes/MainScene.unity
     guid: e4b76df76ba00f6408e2508563d6a648
   m_configObjects: {}

@@ -5,10 +5,10 @@ using UnityEngine.SceneManagement;
 
 public enum SceneName
 {
-    MainUI,
+    UIScene,
     VRTutorial,
-    ShooterScene,
-    AssemblyDissassemlbyScene,
+    ShootingScene,
+    MainScene,
     Testing
 }
 public class SceneMappingManager : MonoBehaviour
@@ -28,6 +28,8 @@ public class SceneMappingManager : MonoBehaviour
         }
         DontDestroyOnLoad(this);
     }
+
+    [HideInInspector]
     public SceneName sceneName;
 
     /// <summary>
@@ -38,7 +40,6 @@ public class SceneMappingManager : MonoBehaviour
     public void changeScene(SceneName sceneName)
     {
         SceneManager.LoadScene(sceneName.ToString());
-
     }
     public void changeScene()
     {
