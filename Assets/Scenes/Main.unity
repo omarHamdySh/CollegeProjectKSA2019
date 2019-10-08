@@ -430,7 +430,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemName: 2
-  gameItemType: 0
 --- !u!1 &67651356
 GameObject:
   m_ObjectHideFlags: 0
@@ -6149,6 +6148,7 @@ GameObject:
   - component: {fileID: 1018776602}
   - component: {fileID: 1018776601}
   - component: {fileID: 1018776600}
+  - component: {fileID: 1018776608}
   m_Layer: 0
   m_Name: switchItem2
   m_TagString: Untagged
@@ -6225,9 +6225,9 @@ MonoBehaviour:
   OnUse:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2055672438}
-        m_MethodName: switchGameItemTo
-        m_Mode: 3
+      - m_Target: {fileID: 1018776608}
+        m_MethodName: switchToChosenItem
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -6400,6 +6400,19 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1018776598}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1018776608
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1018776598}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e8222aef2b9c954e9dae641760c56cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemNameToSwitchTo: 2
 --- !u!1 &1030994621
 GameObject:
   m_ObjectHideFlags: 0
@@ -6492,7 +6505,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemName: 1
-  gameItemType: 2
 --- !u!4 &1057732618
 Transform:
   m_ObjectHideFlags: 0
@@ -7265,6 +7277,7 @@ GameObject:
   - component: {fileID: 1289986572}
   - component: {fileID: 1289986571}
   - component: {fileID: 1289986570}
+  - component: {fileID: 1289986578}
   m_Layer: 0
   m_Name: switchItem2
   m_TagString: Untagged
@@ -7341,9 +7354,9 @@ MonoBehaviour:
   OnUse:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2055672438}
-        m_MethodName: switchGameItemTo
-        m_Mode: 3
+      - m_Target: {fileID: 1018776608}
+        m_MethodName: switchToChosenItem
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -7516,6 +7529,19 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1289986568}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1289986578
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1289986568}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e8222aef2b9c954e9dae641760c56cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemNameToSwitchTo: 2
 --- !u!1 &1291841716
 GameObject:
   m_ObjectHideFlags: 0
@@ -8210,6 +8236,7 @@ GameObject:
   - component: {fileID: 1477756851}
   - component: {fileID: 1477756850}
   - component: {fileID: 1477756849}
+  - component: {fileID: 1477756857}
   m_Layer: 0
   m_Name: switchItem1
   m_TagString: Untagged
@@ -8286,9 +8313,9 @@ MonoBehaviour:
   OnUse:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2055672438}
-        m_MethodName: switchGameItemTo
-        m_Mode: 3
+      - m_Target: {fileID: 1477756857}
+        m_MethodName: switchToChosenItem
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -8461,6 +8488,19 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1477756847}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1477756857
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1477756847}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e8222aef2b9c954e9dae641760c56cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemNameToSwitchTo: 1
 --- !u!1 &1484588501
 GameObject:
   m_ObjectHideFlags: 0
@@ -9083,37 +9123,6 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.05
   m_Center: {x: 0, y: 0, z: 0}
---- !u!1 &1614219958
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1614219959}
-  m_Layer: 0
-  m_Name: '--------------- Game Manager -------------------'
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1614219959
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1614219958}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.6745503, y: 1.426, z: -5.957097}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 2055672435}
-  m_Father: {fileID: 0}
-  m_RootOrder: 7
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1619690728
 GameObject:
   m_ObjectHideFlags: 0
@@ -12421,6 +12430,7 @@ GameObject:
   - component: {fileID: 2002529924}
   - component: {fileID: 2002529923}
   - component: {fileID: 2002529922}
+  - component: {fileID: 2002529930}
   m_Layer: 0
   m_Name: switchItem1
   m_TagString: Untagged
@@ -12497,9 +12507,9 @@ MonoBehaviour:
   OnUse:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2055672438}
-        m_MethodName: switchGameItemTo
-        m_Mode: 3
+      - m_Target: {fileID: 1477756857}
+        m_MethodName: switchToChosenItem
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -12672,6 +12682,19 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2002529920}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &2002529930
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2002529920}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e8222aef2b9c954e9dae641760c56cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemNameToSwitchTo: 1
 --- !u!1 &2002801451
 GameObject:
   m_ObjectHideFlags: 0
@@ -13276,92 +13299,6 @@ MonoBehaviour:
   snapZones:
   - {fileID: 1996215711}
   MySnapZone: {fileID: 946344080}
---- !u!1 &2055672434
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 2055672435}
-  - component: {fileID: 2055672438}
-  - component: {fileID: 2055672437}
-  - component: {fileID: 2055672436}
-  m_Layer: 0
-  m_Name: GameManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &2055672435
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2055672434}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 1614219959}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2055672436
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2055672434}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aba916e4d270bd045875755b607baaa5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  TotalGameDays: 0
-  gameTime:
-    gameHour: 0
-    gameDay: 0
-    realSecond: 0
-    realMinute: 0
-    realHour: 0
-  isUpdating: 0
-  eventsTime: []
---- !u!114 &2055672437
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2055672434}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8a1e7acd69ca76f4383d68ba9f6b47ea, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  currentStateTxt: {fileID: 0}
-  hintTxt: {fileID: 0}
---- !u!114 &2055672438
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2055672434}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a890e06504552cf4f8d7c8ef0dc1ef8c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  timeManager: {fileID: 2055672436}
-  gameplayFSMManager: {fileID: 2055672437}
-  itemsSwitchers:
-  - {fileID: 670805372}
-  - {fileID: 79144108}
-  isTesting: 0
 --- !u!1 &2058325795
 GameObject:
   m_ObjectHideFlags: 0
@@ -13635,7 +13572,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemName: 2
-  gameItemType: 2
 --- !u!1 &2103710781
 GameObject:
   m_ObjectHideFlags: 0
@@ -23761,4 +23697,3 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemName: 1
-  gameItemType: 0

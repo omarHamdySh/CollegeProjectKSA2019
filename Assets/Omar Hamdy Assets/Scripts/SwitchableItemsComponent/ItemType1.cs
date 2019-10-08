@@ -6,10 +6,6 @@ public class ItemType1 : MonoBehaviour, IGameItem
 {
     public GameItemName itemName;
     ItemsSwitcher itemSwitcher;
-
-
-
-
     public void switchOn()
     {
         switchChildrenOn();

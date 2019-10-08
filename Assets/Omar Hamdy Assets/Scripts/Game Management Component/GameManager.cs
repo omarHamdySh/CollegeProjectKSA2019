@@ -5,6 +5,12 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using TMPro;
 using UnityEngine.UI;
+
+/// <summary>
+/// This is a list of items that would have polmorphic shape and different usage but 
+/// The same category.
+/// In this application it is a list of weapons.
+/// </summary>
 public enum GameItemName
 {
     MK2 = 1,
@@ -20,6 +26,7 @@ public enum GameItemName
 public delegate void TimeEvents(float timeUnitValue);
 public delegate bool GamePlayStatesEvents(IGameplayState otherState);
 
+[RequireComponent(typeof(GameplayFSMManager), typeof(TimeManager), typeof(SceneMappingManager))]
 public class GameManager : MonoBehaviour
 {
     private static GameManager _Instance;                               //reference for this script to access it from another place to manage/control his variables and function
@@ -30,13 +37,18 @@ public class GameManager : MonoBehaviour
 
     public GamePlayStatesEvents OnTransitionHaveToEnd;
 
+    [HideInInspector]
     public TimeManager timeManager;
+
+    [HideInInspector]
     public GameplayFSMManager gameplayFSMManager;                       //reference for the state machine controller to access his state
+
     [HideInInspector]
     public ItemsSwitcher[] itemsSwitchers;
     //LevelManager
     public bool isTesting;
 
+    public GameItemName currentlySelectedItem;
     public static GameManager Instance
     {
         get { return _Instance; }
@@ -50,10 +62,13 @@ public class GameManager : MonoBehaviour
             _Instance = this;
         }
         DontDestroyOnLoad(this.gameObject);
+        gameplayFSMManager = GetComponent<GameplayFSMManager>();
+        timeManager = GetComponent<TimeManager>();
     }
 
     private void Start()
     {
+
         OnSceneLoad();
         SceneManager.sceneLoaded += delegate { OnSceneLoad(); };
     }
@@ -92,10 +107,14 @@ public class GameManager : MonoBehaviour
 
     }
 
+    /// <summary>
+    /// Proceed Transition which means that go to what ever game play state you were 
+    /// going before the transition.
+    /// </summary>
     public void proceedTransition()
     {
         PauseState nullObj = null;
-        bool result=  OnTransitionHaveToEnd(nullObj);
+        bool result = OnTransitionHaveToEnd(nullObj);
 
         if (result)
         {
@@ -104,7 +123,13 @@ public class GameManager : MonoBehaviour
 
     }
 
-    IEnumerator turnOfStateFSMHit() {
+    /// <summary>
+    /// Just For the sample scene purpose showing the data reflecting the 
+    /// GamePlay FSM component details and how it works.
+    /// </summary>
+    /// <returns></returns>
+    IEnumerator turnOfStateFSMHit()
+    {
         yield return new WaitForSeconds(3);
         if (gameplayFSMManager.hintTxt.enabled)
         {
@@ -114,40 +139,76 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// This method will be called by the time manager each second
+    /// Functionality:
+    ///     it fires the OnSecondChanged Event which will fire every and each method
+    ///     That is listening to that event
+    /// </summary>
     public void OnSecondChange()
     {
         OnRealSecondChanged(timeManager.gameTime.realSecond);
     }
 
+    /// <summary>
+    /// This method will be called by the time manager each minute.
+    /// Functionality:
+    ///     it fires the OnMinuteChanged Event which will fire every and each method
+    ///     That is listening to that event
+    /// </summary>
     public void OnMinuteChange()
     {
         OnRealMinuteChanged(timeManager.gameTime.realMinute);
     }
 
+    /// <summary>
+    /// This method will be called by the time manager each GameDay.
+    /// Functionality:
+    ///     it fires the OnGameDayChanged Event which will fire every and each method
+    ///     That is listening to that event
+    /// </summary>
     public void OnGameDayChange()
     {
         OnGameDayChanged(timeManager.gameTime.gameDay);
     }
 
-    internal void OnGameHourChange()
+    /// <summary>
+    /// This method will be called by the time manager each GameHour.
+    /// Functionality:
+    ///     it fires the OnGameHourChanged Event which will fire every and each method
+    ///     That is listening to that event
+    /// </summary>
+    public void OnGameHourChange()
     {
         OnGameHourChanged(timeManager.gameTime.gameHour);
     }
 
-    public void switchGameItemTo(int itemNo) {
+    public void switchGameItemTo(int itemNo)
+    {
         foreach (var itemSwitcher in itemsSwitchers)
         {
             itemSwitcher.switchTo(itemNo);
         }
     }
+    public void switchGameItemTo(GameItemName itemName)
+    {
+        currentlySelectedItem = itemName;
+        foreach (var itemSwitcher in itemsSwitchers)
+        {
+            itemSwitcher.switchTo(itemName);
+        }
+    }
+
     /// <summary>
     ///     Check which game play it is, and position the player at that position.
     ///     Also change the weapon item according to the player choice
     /// </summary>
-    public void OnSceneLoad() {
-        itemsSwitchers = FindObjectsOfType<ItemsSwitcher>();
+    public void OnSceneLoad()
+    {
 
+        itemsSwitchers = FindObjectsOfType<ItemsSwitcher>();
     }
+
     #region Deprecated Leveling code
     /**
     public enum GameLevel {//Must be declared out of the class;

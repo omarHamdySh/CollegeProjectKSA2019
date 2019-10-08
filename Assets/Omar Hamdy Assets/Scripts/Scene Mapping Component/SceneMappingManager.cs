@@ -8,7 +8,7 @@ public enum SceneName
     UIScene,
     VRTutorial,
     ShootingScene,
-    MainScene,
+    Main,
     Testing
 }
 public class SceneMappingManager : MonoBehaviour
@@ -31,6 +31,7 @@ public class SceneMappingManager : MonoBehaviour
 
     [HideInInspector]
     public SceneName sceneName;
+    public string sceneNameStr;
 
     /// <summary>
     /// This Method is made to be used from inside the code not from the inspector since it doesn't take a primitive datatype
@@ -39,10 +40,18 @@ public class SceneMappingManager : MonoBehaviour
     /// <param name="sceneName"></param>
     public void changeScene(SceneName sceneName)
     {
-        SceneManager.LoadScene(sceneName.ToString());
+            SceneManager.LoadScene(sceneName.ToString());
     }
-    public void changeScene()
+
+
+    public void changeSceneFromName()
     {
         SceneManager.LoadScene(this.sceneName.ToString());
     }
+    public void changeSceneFromNameStr()
+    {
+        SceneManager.LoadScene(sceneNameStr);
+    }
+
+
 }
