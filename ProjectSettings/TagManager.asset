@@ -34,6 +34,15 @@ TagManager:
   - Ground
   - New tag
   - Highlight
+  - MK2_aix
+  - MK2_Pull_ring
+  - Mk2_Spring
+  - Mk2_Lever
+  - Mk2_Body
+  - Mk2_Hammer
+  - Mk2_Head
+  - MK2_Safty_pin
+  - UI_Items
   layers:
   - Default
   - TransparentFX

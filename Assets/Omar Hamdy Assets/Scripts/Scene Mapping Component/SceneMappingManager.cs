@@ -31,7 +31,6 @@ public class SceneMappingManager : MonoBehaviour
 
     [HideInInspector]
     public SceneName sceneName;
-    public string sceneNameStr;
 
     /// <summary>
     /// This Method is made to be used from inside the code not from the inspector since it doesn't take a primitive datatype
@@ -44,14 +43,11 @@ public class SceneMappingManager : MonoBehaviour
     }
 
 
-    public void changeSceneFromName()
+    public void changeScene()
     {
         SceneManager.LoadScene(this.sceneName.ToString());
     }
-    public void changeSceneFromNameStr()
-    {
-        SceneManager.LoadScene(sceneNameStr);
-    }
+
 
 
 }

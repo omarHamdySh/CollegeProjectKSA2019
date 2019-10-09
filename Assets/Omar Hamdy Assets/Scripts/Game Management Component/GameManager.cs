@@ -49,6 +49,12 @@ public class GameManager : MonoBehaviour
     public bool isTesting;
 
     public GameItemName currentlySelectedItem;
+
+    //-------------------------------------------
+    //Test
+    bool isSceneJustLoaded;
+    int framCounter;
+
     public static GameManager Instance
     {
         get { return _Instance; }
@@ -72,7 +78,26 @@ public class GameManager : MonoBehaviour
         OnSceneLoad();
         SceneManager.sceneLoaded += delegate { OnSceneLoad(); };
     }
+    private void Update()
+    {
+        //if (isSceneJustLoaded)
+        //{
+        //    framCounter++;
+        //}
 
+        //if (framCounter >= 10)
+        //{
+        //    updaeGameITemComponent();
+        //    isSceneJustLoaded = false;
+        //    framCounter = 0;
+        //}
+    }
+    public void updaeGameITemComponent()
+    {
+        itemsSwitchers = FindObjectsOfType<ItemsSwitcher>();
+        switchGameItemTo(this.currentlySelectedItem);
+
+    }
     /// <summary>
     /// function to pause the scene and all the live scripts in the scene
     /// </summary>
@@ -192,11 +217,28 @@ public class GameManager : MonoBehaviour
     }
     public void switchGameItemTo(GameItemName itemName)
     {
-        currentlySelectedItem = itemName;
         foreach (var itemSwitcher in itemsSwitchers)
         {
             itemSwitcher.switchTo(itemName);
         }
+    }
+    public void switchGameItemTo(string itemName)
+    {
+        foreach (var itemSwitcher in itemsSwitchers)
+        {
+            itemSwitcher.switchTo(itemName);
+        }
+    }
+
+    public void setGameItemToSwitchTo(GameItemName itemName)
+    {
+
+        this.currentlySelectedItem = itemName;
+    }
+    public void setGameItemToSwitchTo(int itemNo)
+    {
+
+        this.currentlySelectedItem = (GameItemName)itemNo;
     }
 
     /// <summary>
@@ -206,8 +248,10 @@ public class GameManager : MonoBehaviour
     public void OnSceneLoad()
     {
 
-        itemsSwitchers = FindObjectsOfType<ItemsSwitcher>();
+        //itemsSwitchers = FindObjectsOfType<ItemsSwitcher>();
+        isSceneJustLoaded = true;
     }
+
 
     #region Deprecated Leveling code
     /**

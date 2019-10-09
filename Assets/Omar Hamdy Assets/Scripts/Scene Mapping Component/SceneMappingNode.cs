@@ -15,10 +15,7 @@ public class SceneMappingNode : MonoBehaviour
     {
         SceneMappingManager.Instance.sceneName = sceneName;
     }
-    public void setSceneToChangeTo(string sceneName)
-    {
-        SceneMappingManager.Instance.sceneNameStr = sceneName;
-    }
+
 
 
 }

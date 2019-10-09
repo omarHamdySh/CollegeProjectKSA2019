@@ -19,7 +19,6 @@ public class ItemsSwitcher : MonoBehaviour
         {
             item.setSwitcherReference();
         }
-        itemsList[0].switchOn();
     }
     public void switchTo(string ItemName) {
 
@@ -28,6 +27,7 @@ public class ItemsSwitcher : MonoBehaviour
             if (ItemName == item.getItemName().ToString())
             {
                 item.switchOn();
+                GameManager.Instance.currentlySelectedItem = item.getItemName();
             }
         }
     }
@@ -38,6 +38,8 @@ public class ItemsSwitcher : MonoBehaviour
             if (itemNo == (int)item.getItemName())
             {
                 item.switchOn();
+                GameManager.Instance.currentlySelectedItem = item.getItemName();
+
             }
         }
     }
@@ -48,6 +50,8 @@ public class ItemsSwitcher : MonoBehaviour
             if (ItemName == item.getItemName())
             {
                 item.switchOn();
+                GameManager.Instance.currentlySelectedItem = item.getItemName();
+
             }
         }
     }
