@@ -10,7 +10,9 @@ public static class SaveSystem
         BinaryFormatter formatter = new BinaryFormatter();
 
         //The Application.presentationDataPath returning an non obvious 
-        string path = Application.persistentDataPath + "/player.fun";
+        string path = Application.persistentDataPath + "/"+"userName"+".fun";
+ 
+
         FileStream stream = new FileStream(path, FileMode.Create);
         PlayerData data = new PlayerData(player);
         formatter.Serialize(stream, data);
