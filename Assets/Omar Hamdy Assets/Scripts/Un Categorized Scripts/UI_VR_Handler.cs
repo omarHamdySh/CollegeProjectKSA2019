@@ -1,24 +1,20 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using VRTK;
 
 public class UI_VR_Handler : MonoBehaviour
 {
     private VRTK_InteractableObject Vrscript;
-    public GameObject weaponObject;
-
-    UI_VR_Handler[] SwitchWeaponBtnsHandlers;
-    public GameObject globalLaserSourcePosition;
-    public GameObject localLaserSourcePosition;
-    public int highlightTimeThreshold = 3;
+    public UnityEvent onSelect;
+    public float highlightTimeThreshold = 3;
     float seconds;
 
     // Start is called before the first frame update
     void Start()
     {
         Vrscript = GetComponent<VRTK_InteractableObject>();
-        SwitchWeaponBtnsHandlers = transform.parent.GetComponentsInChildren<UI_VR_Handler>();
     }
 
     // Update is called once per frame
@@ -41,25 +37,10 @@ public class UI_VR_Handler : MonoBehaviour
         if ((Vrscript.enabled && (seconds >= highlightTimeThreshold)))
         {
             seconds = 0;
-            weaponObject.SetActive(true);
-            globalLaserSourcePosition.transform.position = localLaserSourcePosition.transform.position;
-            turnOffOtherWeapons();
+            onSelect.Invoke();
         }
     }
 
-    private void turnOffOtherWeapons()
-    {
 
-        if (SwitchWeaponBtnsHandlers != null)
-        {
-            foreach (var script in SwitchWeaponBtnsHandlers)
-            {
-                if (script != this)
-                {
-                    script.weaponObject.SetActive(false);
-                }
-            }
-        }
-    }
 }
 

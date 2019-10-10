@@ -8,5 +8,5 @@ public interface ControllerItem
     void ControllerSwitchOff();
 
     void setControllerSwitcherReference();
-    ControllerModes getControllerModeName();
+    ControllerModesNames getControllerModeName();
 }

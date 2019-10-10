@@ -19,7 +19,24 @@ public enum GameItemName
     MP5 = 4,
 
 }
-
+public enum ControllerModesNames
+{
+    Grab,
+    Teleporting,
+    UiInteraction,
+    HoldFromDistance,
+    Grab_Teleporting,
+    Grab_UiInteraction,
+    Grab_HoldFromDistance,
+    Teleporting_UiInterACTION,
+    Teleporting_HoldFromDistance,
+    UiInteraction_HoldFromDistance,
+    Grab_Teleporting_UiInteraction,
+    Grab_Teleporting_HoldFromDistance,
+    Grab_UiInteraction_HoldFromDistance,
+    Teleporting_UiInteraction_HoldFromDistance,
+    Grab_Teleporting_UiInteraction_HoldFromDistance
+}
 /// <summary>
 /// Event payload
 /// </summary>
@@ -30,6 +47,9 @@ public delegate bool GamePlayStatesEvents(IGameplayState otherState);
 [RequireComponent(typeof(GameplayFSMManager), typeof(TimeManager), typeof(SceneMappingManager))]
 public class GameManager : MonoBehaviour
 {
+
+
+    #region GameManger Data Memebers 
     private static GameManager _Instance;                               //reference for this script to access it from another place to manage/control his variables and function
     public event TimeEvents OnRealSecondChanged;
     public event TimeEvents OnRealMinuteChanged;
@@ -50,17 +70,19 @@ public class GameManager : MonoBehaviour
     public bool isTesting;
 
     public GameItemName currentlySelectedItem;
-    public ControllerModes _CurrentControllerMode;
+    public ControllerModesNames currentControlleMode;
+    [HideInInspector]
+    public ControllerSwitcher[] controllerSwitcher;
     //-------------------------------------------
-    //Test
-    bool isSceneJustLoaded;
-    int framCounter;
+    #endregion
+
 
     public static GameManager Instance
     {
         get { return _Instance; }
 
     }
+
     private void Awake()
     {
         /** Order of methods calling is critical**/
@@ -71,34 +93,29 @@ public class GameManager : MonoBehaviour
         DontDestroyOnLoad(this.gameObject);
         gameplayFSMManager = GetComponent<GameplayFSMManager>();
         timeManager = GetComponent<TimeManager>();
-    }
-
-    private void Start()
-    {
-
-        OnSceneLoad();
         SceneManager.sceneLoaded += delegate { OnSceneLoad(); };
-    }
-    private void Update()
-    {
-        //if (isSceneJustLoaded)
-        //{
-        //    framCounter++;
-        //}
 
-        //if (framCounter >= 10)
-        //{
-        //    updaeGameITemComponent();
-        //    isSceneJustLoaded = false;
-        //    framCounter = 0;
-        //}
     }
+
+    /// <summary>
+    ///     Check which game play it is, and position the player at that position.
+    ///     Also change the weapon item according to the player choice
+    /// </summary>
+
+    public void OnSceneLoad()
+    {
+
+    }
+
     public void updaeGameITemComponent()
     {
         itemsSwitchers = FindObjectsOfType<ItemsSwitcher>();
         switchGameItemTo(this.currentlySelectedItem);
 
     }
+
+
+    #region  Gameplay States Global Methods 
     /// <summary>
     /// function to pause the scene and all the live scripts in the scene
     /// </summary>
@@ -164,13 +181,17 @@ public class GameManager : MonoBehaviour
             gameplayFSMManager.hintTxt.color = Color.white;
         }
     }
+    #endregion
 
+
+    #region Time Periods Related Events 
     /// <summary>
     /// This method will be called by the time manager each second
     /// Functionality:
     ///     it fires the OnSecondChanged Event which will fire every and each method
     ///     That is listening to that event
     /// </summary>
+
     public void OnSecondChange()
     {
         OnRealSecondChanged(timeManager.gameTime.realSecond);
@@ -208,7 +229,10 @@ public class GameManager : MonoBehaviour
     {
         OnGameHourChanged(timeManager.gameTime.gameHour);
     }
+    #endregion
 
+
+    #region Game Items Switch Methods
     public void switchGameItemTo(int itemNo)
     {
         foreach (var itemSwitcher in itemsSwitchers)
@@ -223,6 +247,7 @@ public class GameManager : MonoBehaviour
             itemSwitcher.switchTo(itemName);
         }
     }
+  
     public void switchGameItemTo(string itemName)
     {
         foreach (var itemSwitcher in itemsSwitchers)
@@ -241,17 +266,7 @@ public class GameManager : MonoBehaviour
 
         this.currentlySelectedItem = (GameItemName)itemNo;
     }
-
-    /// <summary>
-    ///     Check which game play it is, and position the player at that position.
-    ///     Also change the weapon item according to the player choice
-    /// </summary>
-    public void OnSceneLoad()
-    {
-
-        //itemsSwitchers = FindObjectsOfType<ItemsSwitcher>();
-        isSceneJustLoaded = true;
-    }
+    #endregion
 
 
     #region Deprecated Leveling code
@@ -309,8 +324,32 @@ public class GameManager : MonoBehaviour
     #endregion
 
 
-    /**
-     * ****************Araby Testing Work 
-     * */
+    #region Controllers Switch Methods
+    /// <summary>
+    /// 
+    /// </summary>
+    public void UpdateControllerModes()
+        {
+            controllerSwitcher = FindObjectsOfType<ControllerSwitcher>();
+            SwitchControllerModeTo(this.currentControlleMode);
 
+        }
+
+        public void SwitchControllerModeTo(ControllerModesNames modeName)
+        {
+            foreach (var controllerMode in itemsSwitchers)
+            {
+                controllerMode.switchTo(modeName.ToString());
+            }
+        }
+    /// <summary>
+    /// /
+    /// </summary>
+    /// <param name="modeName"></param>
+        public void SetControllerModeThatWillSwitchTo(ControllerModesNames modeName)
+        {
+
+            this.currentControlleMode = modeName;
+        }
+    #endregion
 }
