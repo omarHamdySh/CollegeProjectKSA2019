@@ -19,6 +19,7 @@ public enum GameItemName
     MP5 = 4,
 
 }
+
 /// <summary>
 /// Event payload
 /// </summary>
@@ -49,7 +50,7 @@ public class GameManager : MonoBehaviour
     public bool isTesting;
 
     public GameItemName currentlySelectedItem;
-
+    public ControllerModes _CurrentControllerMode;
     //-------------------------------------------
     //Test
     bool isSceneJustLoaded;
@@ -306,4 +307,10 @@ public class GameManager : MonoBehaviour
     }
     **/
     #endregion
+
+
+    /**
+     * ****************Araby Testing Work 
+     * */
+
 }
