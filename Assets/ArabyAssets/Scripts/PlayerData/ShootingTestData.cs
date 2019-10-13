@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class ShootingTestData : MonoBehaviour
 {
-    public int targetMiss = 0;
-    public int tagetHit = 0;
-    public float accuracy = 0.0f;
-    public string testGPA = "";
-    public int shootingRange = 0;
-    public float timeSpent;
+    public int targetMiss;          //number of the target the user missed 
+    public int tagetHit;           //number of the target user hit
+    public float accuracy;        //the accuracy of the Player on Trainign 
+    public string testGPA;       //the GPA of the user Test
+    public int shootingRange ;  //the range of shooting the player choose
+    public float timeSpent;    //the total time spent in the training 
 }

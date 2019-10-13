@@ -4,15 +4,8 @@ using UnityEngine;
 
 public class AssembleTrainingData : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public int timeSpent;    //Total time soent in training 
+    public int result;      //the result of the test
+    public string gpa;     //the GPA of the current training useing some formula
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }

@@ -4,15 +4,6 @@ using UnityEngine;
 
 public class AssembleTestData : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public float timeSpent;    //total time spend in the Test of assemble and deaassble Quize
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }

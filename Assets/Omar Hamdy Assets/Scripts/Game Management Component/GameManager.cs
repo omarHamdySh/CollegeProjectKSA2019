@@ -21,21 +21,7 @@ public enum GameItemName
 }
 public enum ControllerModesNames
 {
-    Grab,
-    Teleporting,
-    UiInteraction,
-    HoldFromDistance,
-    Grab_Teleporting,
-    Grab_UiInteraction,
-    Grab_HoldFromDistance,
-    Teleporting_UiInterACTION,
-    Teleporting_HoldFromDistance,
-    UiInteraction_HoldFromDistance,
-    Grab_Teleporting_UiInteraction,
-    Grab_Teleporting_HoldFromDistance,
-    Grab_UiInteraction_HoldFromDistance,
-    Teleporting_UiInteraction_HoldFromDistance,
-    Grab_Teleporting_UiInteraction_HoldFromDistance
+//Could be used in future if we have Game Modes Controllers
 }
 /// <summary>
 /// Event payload
