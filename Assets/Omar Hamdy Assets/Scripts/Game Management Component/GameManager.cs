@@ -19,6 +19,18 @@ public enum GameItemName
     MP5 = 4,
 
 }
+// The levels that player have to pass
+//Must intialize ASAP  ****************************************IMPORTANT*****************************
+
+public enum GameLevelsNames
+{
+    Level_0,
+    Level_1,
+    Level_2
+}
+
+
+//Controller Prefabs Names Switcher
 public enum ControllerModesNames
 {
 //Could be used in future if we have Game Modes Controllers
@@ -60,6 +72,7 @@ public class GameManager : MonoBehaviour
     [HideInInspector]
     public ControllerSwitcher[] controllerSwitcher;
     //-------------------------------------------
+    private GameLevelsNames currentLevel;
     #endregion
 
 
@@ -337,5 +350,50 @@ public class GameManager : MonoBehaviour
 
             this.currentControlleMode = modeName;
         }
+    #endregion
+
+
+    #region Level Manager Methods
+    public int GetCurrentLevel(GameLevelsNames level)
+    {
+        var levels = Enum.GetValues(typeof(GameLevelsNames));
+        foreach (var item in levels)
+        {
+            if ((GameLevelsNames)item == level)
+            {
+                return (int)item;
+            }
+        }
+        return -1;
+    }
+    public void MoveToNextLevel()
+    {
+        //increamenet the level index 
+        currentLevel = (GameLevelsNames)GetCurrentLevel(this.currentLevel) + 1;
+        //Set the current available weapon to the scene
+        //switchGameItemTo(currentlySelectedItem + 1);        
+        //decide which weapon to swap to 
+        switch (currentLevel)
+        {
+            case GameLevelsNames.Level_0:
+                {
+                    //change weapon 
+                    //setGameItemToSwitchTo(currentlySelectedItem);
+                    break;
+                }
+            case GameLevelsNames.Level_1:
+                {
+                    //change weapon
+                    //setGameItemToSwitchTo(currentlySelectedItem);
+                    break;
+                }
+            case GameLevelsNames.Level_2:
+                {
+                    //change weapon
+                   // setGameItemToSwitchTo(currentlySelectedItem);   
+                    break;
+                }
+        }
+    }
     #endregion
 }
