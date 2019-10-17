@@ -4,26 +4,32 @@ using UnityEngine;
 
 #region SnapOrder's SnapOrderFlag  Enum
 
-/// <summary>
-/// Interactable state means that the object is not snapped and it can be interacted with.
-/// Snapped state indicates that the object is snapped which means that the previous 
-/// snap order object in the snap order objects list that its collider is disabled because it can't be interacted with at the moment.
-/// But the recent snapped object can be interacted with only if the next snap object is flagged with interactable.
-/// </summary>
-public enum SnapOrderFlag
-{
-    INTERACTABLE,
-    SNAPPED
-}
 
 #endregion
 public class SnapOrder : MonoBehaviour
 {
+    #region Enums
+    /// <summary>
+    /// Interactable state means that the object is not snapped and it can be interacted with.
+    /// Snapped state indicates that the object is snapped which means that the previous 
+    /// snap order object in the snap order objects list that its collider is disabled because it can't be interacted with at the moment.
+    /// But the recent snapped object can be interacted with only if the next snap object is flagged with interactable.
+    /// </summary>
+    public enum SnapOrderFlag
+    {
+        INTERACTABLE,
+        SNAPPED
+    }
+
+    #endregion
+
     #region SnapOrder Attributes
 
 
     protected       Collider                thisCollider;                   //The collider of the this snappable object
-    protected       SnapOrder               AssemblyBase;                   //This is first snappable object in the list
+
+    [HideInInspector]
+    public       SnapOrder               AssemblyBase;                   //This is first snappable object in the list
 
     [Tooltip("The snap flag of this snappable object that indecates whether it is (SNAPPED) to its snap zone or not -> (INTERACTABLE). \nUsage: readonly \nRequired: False")]
     public          SnapOrderFlag           snapFlag;                       //The snap flag of the current object 
@@ -40,22 +46,32 @@ public class SnapOrder : MonoBehaviour
     [Tooltip("Here you must insert the snap zone of the \nRequired: true")]
     public          GameObject              MySnapZone;                     //The snap zone that this snappable object suppose to be snapped to.
 
+    [Header("The Snap Group Order of this part")]
+    [Tooltip("The Snap Group Order of the part of the assembly system. \nRequired: true")]                  //The group of snappable parts, which each snap order entity has a group that it belongs to.
+    public          SnapGroupOrder          mySnapGroupOrder;
+
+    public          int                     thisSnapOrderIndex;
+
     #endregion
 
     #region SnapOrder Methods (Logic)
 
     /// <summary>
     /// The snapFlag is to tell whether or not the object is snapped.
-    /// 
     /// </summary>
+
     // Start is called before the first frame update
     void Start()
     {
         snapFlag = SnapOrderFlag.INTERACTABLE;                              //Inialize the snap flag with interactable;
         thisCollider = GetComponent<Collider>();                            //Get this object's collider
         SwitchSnapAreasOff();                                               //Switch off all snap areas 
-        AssemblyBase = snapOrderObjects[0];                                 //Get the first snappable object in the list to be tha base.
-        AssemblyBase.SwitchSnapAreasOn();                                   //Switch the snappable objects' base object's snap areas on.
+
+        if (!mySnapGroupOrder)
+        {
+            AssemblyBase = snapOrderObjects[0];                                 //Get the first snappable object in the list to be tha base.
+            AssemblyBase.SwitchSnapAreasOn();                                   //Switch the snappable objects' base object's snap areas on.
+        }
     }
 
     /// <summary>
@@ -80,6 +96,7 @@ public class SnapOrder : MonoBehaviour
     ///         - After completing the snap order level the colliders of all the finished level objects must be disabled.
     ///     (2) There is something important I forgut but it may be included in the previous point or not.
     /// </summary>
+
     public void OnSnappingThis()
     {
         //check if it is not the base snappable object
@@ -87,8 +104,8 @@ public class SnapOrder : MonoBehaviour
         {
             //Mark the flag of the snappable object to be SNAPPED
             snapFlag = SnapOrderFlag.SNAPPED;
-           
-            int thisSnapOrderIndex = snapOrderObjects.IndexOf(this);
+
+            thisSnapOrderIndex = snapOrderObjects.IndexOf(this);
            
             //Check if the previous snappable object in the list is not the base snappable object
             if (snapOrderObjects[thisSnapOrderIndex - 1] != AssemblyBase)
@@ -102,6 +119,12 @@ public class SnapOrder : MonoBehaviour
 
             //Switch on the snap zone(s) of the next snappable object(s)
             SwitchSnapAreasOn();
+        }
+         
+         
+        if (mySnapGroupOrder.SGO_Members[mySnapGroupOrder.SGO_Members.Count-1]==this /*&& this != AssemblyBase*/)
+        {
+            mySnapGroupOrder.mySGO_Manager.moveToNextMember();
         }
 
     }
@@ -117,12 +140,12 @@ public class SnapOrder : MonoBehaviour
             //Mark the flag of the snappable object to be INTERACTABLE
             snapFlag = SnapOrderFlag.INTERACTABLE;
 
-            int thisSnapOrderIndex = snapOrderObjects.IndexOf(this);
+            thisSnapOrderIndex = snapOrderObjects.IndexOf(this);
 
             //Check if the previous snappable object in the list is not the base snappable object
             if (snapOrderObjects[thisSnapOrderIndex - 1] != AssemblyBase)
             {
-                //if the previous snappable object in the list is not the base then enable its collider in order to be still
+                //if the previous snappable object in the list is not the base then enable its collider in order to be interactable
                 snapOrderObjects[thisSnapOrderIndex - 1].thisCollider.enabled = true;
             }
           
@@ -132,6 +155,11 @@ public class SnapOrder : MonoBehaviour
             //Switch off the snap zone(s) of the next snappable object(s)
             SwitchSnapAreasOff();
         }
+
+        if (mySnapGroupOrder.SGO_Members[0] == this /*&& this != AssemblyBase*/)
+        {
+            mySnapGroupOrder.mySGO_Manager.moveToPreviousMemeber();
+        }
     }
 
     /// <summary>
@@ -139,7 +167,7 @@ public class SnapOrder : MonoBehaviour
     ///     - Loop on the snapZones that are childs of this snappable object.
     ///     - Turn enable each's collider on.
     /// </summary>
-    protected void SwitchSnapAreasOn()
+    public void SwitchSnapAreasOn()
     {
         foreach (var snapAreaObj in snapZones)
         {
@@ -152,7 +180,7 @@ public class SnapOrder : MonoBehaviour
     ///     - Loop on the snapZones that are childs of this snappable object.
     ///     - Turn enable each's collider off.
     /// </summary>
-    protected void SwitchSnapAreasOff()
+    public void SwitchSnapAreasOff()
     {
         foreach (var snapAreaObj in snapZones)
         {
