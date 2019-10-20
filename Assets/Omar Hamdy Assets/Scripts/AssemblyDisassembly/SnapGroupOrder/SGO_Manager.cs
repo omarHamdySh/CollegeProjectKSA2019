@@ -16,9 +16,13 @@ public class SGO_Manager : MonoBehaviour
 
     private void Init()
     {
-        SGOs[0].state = SnapGroupOrder.SGO_State.InAction;
+        SGOs[0].state = SnapGroupOrder.SGO_State.InAction;  //The state of the first SGO to Inaction because it is the intial state.
 
-        SGOs[0].activateCurrentSGOMemebers();
+        SGOs[0].activateCurrentSGOMemebers();               //Activate the 1st SGO.   
+
+        SGOs[1].state = SnapGroupOrder.SGO_State.InAction;  //The state of the first SGO to Inaction because it is the intial state.
+
+        SGOs[1].activateCurrentSGOMemebers();               //Activate the 1st SGO.
 
         currentSGO = SGOs[0];
 
@@ -40,6 +44,7 @@ public class SGO_Manager : MonoBehaviour
             }
         }
         SGOs[0].SGO_Members[0].SwitchSnapAreasOn();   //enable the assembly Base snap child snap areas.
+        SGOs[1].SGO_Members[1].SwitchSnapAreasOn();   //enable the assembly Base snap child snap areas.
         InitOnTheDefualtState();                      //Deactivate every other snap group order members but the current's.
     }
 
@@ -63,10 +68,10 @@ public class SGO_Manager : MonoBehaviour
                 
         foreach (var SGO in SGOs)
         {
-            if (SGO != currentSGO  /*&&  SGO!= SGOs[firstAfterBaseGroup]*/)
+            if (SGO != currentSGO || SGO != SGOs[1] /*&&  SGO!= SGOs[firstAfterBaseGroup]*/)
             {
                 SGO.deactivateThisSGOMemebers();
-            }
+            } 
 
         }
     }

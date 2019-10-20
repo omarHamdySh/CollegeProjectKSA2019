@@ -55,9 +55,9 @@ public class SnapGroupOrder : MonoBehaviour
         //Set this SGO state to be Waiting
         this.state = SGO_State.Waiting;
 
-        //If there is no previous member set the state of this member to InAction.
-        if (this.myIndex == 0)
-        {
+        //If there is no previous members before the first item after base set the state of this member to InAction.
+        if (this.myIndex == 1)
+        {//Margin
             this.state = SGO_State.InAction;
             mySGO_Manager.currentSGO = this;
         }
