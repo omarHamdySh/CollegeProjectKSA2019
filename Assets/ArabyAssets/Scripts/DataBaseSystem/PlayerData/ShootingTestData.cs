@@ -9,14 +9,20 @@ public class ShootingTestData
     public float accuracy;        //the accuracy of the Player on Trainign 
     public string testGPA;       //the GPA of the user Test
     public int shootingRange ;  //the range of shooting the player choose
-    public float timeSpent;    //the total time spent in the training 
-    public ShootingTestData(int targetMiss,int targetHit,float accureacy,string GPA,int shootingRange,float timeSpent)
+    public int minutesSpent;
+    public int secondsSpent;//the total time spent in the training 
+    public ShootingTestData()
+    {
+
+    }
+    public ShootingTestData(int targetMiss,int targetHit,float accureacy,string GPA,int shootingRange,int min,int sec)
     {
         this.targetMiss = targetMiss;
         this.targetHit = targetHit;
         this.accuracy = accureacy;
         this.testGPA = GPA;
         this.shootingRange = shootingRange;
-        this.timeSpent = timeSpent;
+        this.minutesSpent = min;
+        this.secondsSpent = sec;
     }
 }
