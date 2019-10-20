@@ -7,6 +7,8 @@ using System.IO;
 using System;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using System.Net;
+using System.Net.Sockets;
 
 
 #region Tabels Columns Names and Data Types
@@ -45,16 +47,7 @@ public class DbManager : MonoBehaviour
             _Instance = this;
         }
     }
-    private void Start()
-    {
-        Init();
-        List<ShootingTrainingData> sh= GetShootingTrainingRecord(1);
-       
-           Debug.Log( sh[1].shootingAccuracyGPA);
-        Debug.Log(sh[0].shootingAccuracyGPA);
-
-        CloseDataBaseConnection();
-    }
+  
 
     //Initialize All Database Main Variables 
     public string dbDataSource = "127.0.0.1";
@@ -71,7 +64,23 @@ public class DbManager : MonoBehaviour
     public InputField SignInputPassword;
     public Text ErrorDialougText;
     //end Test
-  public bool CheckRegistrationInputValidation()
+    private void Start()
+    {
+        dbDataSource = GetLocalIPAddress();
+    }
+    public static string GetLocalIPAddress()
+    {
+        var host = Dns.GetHostEntry(Dns.GetHostName());
+        foreach (var ip in host.AddressList)
+        {
+            if (ip.AddressFamily == AddressFamily.InterNetwork)
+            {
+                return ip.ToString();
+            }
+        }
+        throw new Exception("No network adapters with an IPv4 address in the system!");
+    }
+    public bool CheckRegistrationInputValidation()
     {
         if (string.IsNullOrEmpty(RegInputPassword.text)|| RegInputPassword.text==""|| RegInputPassword.text==" ")
         {
