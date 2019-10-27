@@ -62,13 +62,11 @@ public class DbManager : MonoBehaviour
     public InputField RegInputPassword;
     public InputField SignInputUserName;
     public InputField SignInputPassword;
-    public InputField ServerIpAdrees;
-    public Text deviceIp;
     public Text ErrorDialougText;
     //end Test
     private void Start()
     {
-        deviceIp.text ="device IP "+ GetLocalIPAddress();
+        dbDataSource = GetLocalIPAddress();
     }
     public static string GetLocalIPAddress()
     {
@@ -84,7 +82,7 @@ public class DbManager : MonoBehaviour
     }
     public bool CheckRegistrationInputValidation()
     {
-        if (string.IsNullOrEmpty(RegInputPassword.text) || RegInputPassword.text == "" || RegInputPassword.text == " ")
+        if (string.IsNullOrEmpty(RegInputPassword.text)|| RegInputPassword.text==""|| RegInputPassword.text==" ")
         {
             ErrorDialougText.color = Color.red;
             ErrorDialougText.text = "You Did not enter a password";
@@ -94,13 +92,6 @@ public class DbManager : MonoBehaviour
         {
             ErrorDialougText.color = Color.red;
             ErrorDialougText.text = "You Did not enter a user name";
-            return false;
-        }
-        Init();
-        int y = GetIdByUserNameAndPassword(RegInputUserName.text, RegInputPassword.text);
-        if (y == -1)
-        {
-            CloseDataBaseConnection();
             return false;
         }
         return true; 
@@ -119,17 +110,6 @@ public class DbManager : MonoBehaviour
             ErrorDialougText.text = "You Did not enter a user name";
             return false;
         }
-        return true;
-    }
-    public bool CheckServergInInputValidation()
-    {
-        if (string.IsNullOrEmpty(ServerIpAdrees.text) || ServerIpAdrees.text == "" || ServerIpAdrees.text == " ")
-        {
-            ErrorDialougText.color = Color.red;
-            ErrorDialougText.text = "Enter a valid ip adress ";
-            return false;
-        }
-   
         return true;
     }
     //Initialize the Database Connection 2
@@ -172,16 +152,23 @@ public class DbManager : MonoBehaviour
     }
     public void RegisternewUser()
     {
-        string playerName = RegInputUserName.text.ToLower();
-        string playerPassword = RegInputPassword.text.ToLower();
-            Init();
-            RegisterNewUser(playerName, playerPassword);
-        
+        string playerName = RegInputUserName.text;
+        string playerPassword = RegInputPassword.text;
+        if (CheckRegistrationInputValidation() == false)
+        {
+            return;
+        }
+        Init();
+        RegisterNewUser(playerName, playerPassword);
     }
     public void SignIn()
     {
-        string playerName = SignInputUserName.text.ToLower();
-        string playerPassword = SignInputPassword.text.ToLower();
+        string playerName = SignInputUserName.text;
+        string playerPassword = SignInputPassword.text;
+        if (CheckSigningInInputValidation() == false)
+        {
+            return;
+        }
         Init();
         if ( SigningIn(playerName, playerPassword))
         {
@@ -210,7 +197,7 @@ public class DbManager : MonoBehaviour
             comm.Parameters.AddWithValue("@password", Password);
             comm.Parameters.AddWithValue("@firsttime", 1);
             comm.ExecuteNonQuery();
-            ErrorDialougText.color = Color.green;
+            ErrorDialougText.color = Color.red;
             ErrorDialougText.text = "New User Added Successully";
         } catch (Exception e)
         {
@@ -244,7 +231,7 @@ public class DbManager : MonoBehaviour
     }
     public int GetIdByUserNameAndPassword(string username,string pass)
     {
-        int temp=-1;
+        int temp=0;
         try
         {
             string query = "SELECT ID from userdata WHERE UserName='" + username + "' AND Password = '" + pass + "'";

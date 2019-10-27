@@ -26,31 +26,31 @@ public class SnapOrder : MonoBehaviour
     #region SnapOrder Attributes
 
 
-    protected       Collider                thisCollider;                   //The collider of the this snappable object
+    protected Collider thisCollider;                   //The collider of the this snappable object
 
     [HideInInspector]
-    public       SnapOrder               AssemblyBase;                   //This is first snappable object in the list
+    public SnapOrder AssemblyBase;                   //This is first snappable object in the list
 
     [Tooltip("The snap flag of this snappable object that indecates whether it is (SNAPPED) to its snap zone or not -> (INTERACTABLE). \nUsage: readonly \nRequired: False")]
-    public          SnapOrderFlag           snapFlag;                       //The snap flag of the current object 
+    public SnapOrderFlag snapFlag;                       //The snap flag of the current object 
 
     [Header("All Parts' Snap Order Scripts")]
     [Tooltip("Here you must insert all the snappable objects in ordered their right order (Snap Order List), will be ordered according to the insertion order. \nRequired: true")]
-    public          List<SnapOrder>         snapOrderObjects;               //Snap objects list that retain the order of the snapping
+    public List<SnapOrder> snapOrderObjects;               //Snap objects list that retain the order of the snapping
 
     [Header("The Snap Zone(s) of the next part(s)")]
     [Tooltip("Here you must insert all the snap zones of the next object(s) in the snap order list \nRequired: true")]
-    public          List<GameObject>        snapZones;                      //The snap zones of the objects that supposed to be snapped to this snappable object.
+    public List<GameObject> snapZones;                      //The snap zones of the objects that supposed to be snapped to this snappable object.
 
     [Header("The Snap Zone of this part")]
     [Tooltip("Here you must insert the snap zone of the \nRequired: true")]
-    public          GameObject              MySnapZone;                     //The snap zone that this snappable object suppose to be snapped to.
+    public GameObject MySnapZone;                     //The snap zone that this snappable object suppose to be snapped to.
 
     [Header("The Snap Group Order of this part")]
     [Tooltip("The Snap Group Order of the part of the assembly system. \nRequired: true")]                  //The group of snappable parts, which each snap order entity has a group that it belongs to.
-    public          SnapGroupOrder          mySnapGroupOrder;
+    public SnapGroupOrder mySnapGroupOrder;
 
-    public          int                     thisSnapOrderIndex;
+    public int thisSnapOrderIndex;                                             //
 
     #endregion
 
@@ -100,13 +100,13 @@ public class SnapOrder : MonoBehaviour
     public void OnSnappingThis()
     {
         //check if it is not the base snappable object
-        if (this != AssemblyBase)                                                      
+        if (this != AssemblyBase)
         {
             //Mark the flag of the snappable object to be SNAPPED
             snapFlag = SnapOrderFlag.SNAPPED;
 
             thisSnapOrderIndex = snapOrderObjects.IndexOf(this);
-           
+
             //Check if the previous snappable object in the list is not the base snappable object
             if (snapOrderObjects[thisSnapOrderIndex - 1] != AssemblyBase)
             {
@@ -120,13 +120,14 @@ public class SnapOrder : MonoBehaviour
             //Switch on the snap zone(s) of the next snappable object(s)
             SwitchSnapAreasOn();
         }
-         
-         
-        if (mySnapGroupOrder.SGO_Members[mySnapGroupOrder.SGO_Members.Count-1]==this /*&& this != AssemblyBase*/)
-        {
-            mySnapGroupOrder.mySGO_Manager.moveToNextMember();
-        }
 
+        if (mySnapGroupOrder)
+        {
+            if (mySnapGroupOrder.SGO_Members[mySnapGroupOrder.SGO_Members.Count - 1] == this /*&& this != AssemblyBase*/)
+            {
+                mySnapGroupOrder.mySGO_Manager.moveToNextMember();
+            }
+        }
     }
 
     /// <summary>
@@ -148,7 +149,7 @@ public class SnapOrder : MonoBehaviour
                 //if the previous snappable object in the list is not the base then enable its collider in order to be interactable
                 snapOrderObjects[thisSnapOrderIndex - 1].thisCollider.enabled = true;
             }
-          
+
             //Turn on the collider of the snap zone of this snappable object in order to be able to snap this snappable object again.
             this.MySnapZone.GetComponent<Collider>().enabled = true;
 
@@ -156,9 +157,12 @@ public class SnapOrder : MonoBehaviour
             SwitchSnapAreasOff();
         }
 
-        if (mySnapGroupOrder.SGO_Members[0] == this /*&& this != AssemblyBase*/)
+        if (mySnapGroupOrder)
         {
-            mySnapGroupOrder.mySGO_Manager.moveToPreviousMemeber();
+            if (mySnapGroupOrder.SGO_Members[0] == this /*&& this != AssemblyBase*/)
+            {
+                mySnapGroupOrder.mySGO_Manager.moveToPreviousMemeber();
+            }
         }
     }
 
@@ -191,7 +195,7 @@ public class SnapOrder : MonoBehaviour
     #endregion
 
     #region   Deprecated Logic
-   
+
     /// <summary>
     /// We had tried this version of the snap object logic but unfortunatily it hasn't achevied the desired results
     /// The problems we faced are the following:
