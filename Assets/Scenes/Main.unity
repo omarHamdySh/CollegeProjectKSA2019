@@ -1316,6 +1316,7 @@ MonoBehaviour:
   allowedUseControllers: 0
   objectHighlighter: {fileID: 0}
   touchHighlightColor: {r: 0, g: 0, b: 0, a: 0}
+  grabbingObjects: []
   usingState: 0
 --- !u!1 &79144106
 GameObject:
@@ -1743,6 +1744,7 @@ MonoBehaviour:
   allowedUseControllers: 0
   objectHighlighter: {fileID: 0}
   touchHighlightColor: {r: 0, g: 0, b: 0, a: 0}
+  grabbingObjects: []
   usingState: 0
 --- !u!64 &118247096
 MeshCollider:
@@ -1770,6 +1772,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc28a9e8a157ca04b8eef4e448e338ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  AssemblyBase: {fileID: 0}
   snapFlag: 0
   snapOrderObjects:
   - {fileID: 816857879}
@@ -2017,6 +2020,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc28a9e8a157ca04b8eef4e448e338ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  AssemblyBase: {fileID: 0}
   snapFlag: 0
   snapOrderObjects:
   - {fileID: 816857879}
@@ -2129,6 +2133,7 @@ MonoBehaviour:
   allowedUseControllers: 0
   objectHighlighter: {fileID: 0}
   touchHighlightColor: {r: 0, g: 0, b: 0, a: 0}
+  grabbingObjects: []
   usingState: 0
 --- !u!1 &159136652
 GameObject:
@@ -2448,6 +2453,7 @@ MonoBehaviour:
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
   highlightTimeThreshold: 1.5
+  HighlightGameObject: {fileID: 0}
 --- !u!114 &174584924
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2530,6 +2536,7 @@ MonoBehaviour:
   allowedUseControllers: 0
   objectHighlighter: {fileID: 0}
   touchHighlightColor: {r: 0.93333334, g: 0.8784314, b: 0, a: 1}
+  grabbingObjects: []
   usingState: 0
 --- !u!65 &174584928
 BoxCollider:
@@ -3489,6 +3496,7 @@ MonoBehaviour:
   allowedUseControllers: 0
   objectHighlighter: {fileID: 0}
   touchHighlightColor: {r: 0, g: 0, b: 0, a: 0}
+  grabbingObjects: []
   usingState: 0
 --- !u!65 &258208953
 BoxCollider:
@@ -3735,6 +3743,7 @@ MonoBehaviour:
   allowedUseControllers: 0
   objectHighlighter: {fileID: 0}
   touchHighlightColor: {r: 0, g: 0, b: 0, a: 0}
+  grabbingObjects: []
   usingState: 0
 --- !u!65 &267611524
 BoxCollider:
@@ -4746,6 +4755,7 @@ MonoBehaviour:
   allowedUseControllers: 0
   objectHighlighter: {fileID: 0}
   touchHighlightColor: {r: 0, g: 0, b: 0, a: 0}
+  grabbingObjects: []
   usingState: 0
 --- !u!64 &362116855
 MeshCollider:
@@ -4833,6 +4843,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc28a9e8a157ca04b8eef4e448e338ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  AssemblyBase: {fileID: 0}
   snapFlag: 0
   snapOrderObjects:
   - {fileID: 2083798733}
@@ -4841,7 +4852,7 @@ MonoBehaviour:
   - {fileID: 1945178106}
   - {fileID: 1444647455}
   - {fileID: 959463156}
-  - {fileID: 0}
+  - {fileID: 866098104}
   snapZones:
   - {fileID: 41194827}
   MySnapZone: {fileID: 1007945930}
@@ -5692,6 +5703,7 @@ MonoBehaviour:
   allowedUseControllers: 0
   objectHighlighter: {fileID: 0}
   touchHighlightColor: {r: 0, g: 0, b: 0, a: 0}
+  grabbingObjects: []
   usingState: 0
 --- !u!65 &454614148
 BoxCollider:
@@ -6103,6 +6115,7 @@ MonoBehaviour:
   allowedUseControllers: 0
   objectHighlighter: {fileID: 0}
   touchHighlightColor: {r: 0, g: 0, b: 0, a: 0}
+  grabbingObjects: []
   usingState: 0
 --- !u!65 &519411887
 BoxCollider:
@@ -6465,6 +6478,7 @@ MonoBehaviour:
   allowedUseControllers: 0
   objectHighlighter: {fileID: 0}
   touchHighlightColor: {r: 0, g: 0, b: 0, a: 0}
+  grabbingObjects: []
   usingState: 0
 --- !u!114 &558869162
 MonoBehaviour:
@@ -7090,6 +7104,7 @@ MonoBehaviour:
   allowedUseControllers: 0
   objectHighlighter: {fileID: 0}
   touchHighlightColor: {r: 0, g: 0, b: 0, a: 0}
+  grabbingObjects: []
   usingState: 0
 --- !u!64 &603279053
 MeshCollider:
@@ -7117,6 +7132,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc28a9e8a157ca04b8eef4e448e338ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  AssemblyBase: {fileID: 0}
   snapFlag: 0
   snapOrderObjects:
   - {fileID: 816857879}
@@ -8217,6 +8233,7 @@ MonoBehaviour:
   allowedUseControllers: 0
   objectHighlighter: {fileID: 0}
   touchHighlightColor: {r: 0, g: 0, b: 0, a: 0}
+  grabbingObjects: []
   usingState: 0
 --- !u!65 &675562540
 BoxCollider:
@@ -10958,6 +10975,7 @@ MonoBehaviour:
   allowedUseControllers: 0
   objectHighlighter: {fileID: 0}
   touchHighlightColor: {r: 0, g: 0, b: 0, a: 0}
+  grabbingObjects: []
   usingState: 0
 --- !u!64 &816857878
 MeshCollider:
@@ -10985,6 +11003,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc28a9e8a157ca04b8eef4e448e338ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  AssemblyBase: {fileID: 0}
   snapFlag: 0
   snapOrderObjects:
   - {fileID: 816857879}
@@ -11310,6 +11329,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc28a9e8a157ca04b8eef4e448e338ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  AssemblyBase: {fileID: 0}
   snapFlag: 0
   snapOrderObjects:
   - {fileID: 2083798733}
@@ -11385,6 +11405,7 @@ MonoBehaviour:
   allowedUseControllers: 0
   objectHighlighter: {fileID: 0}
   touchHighlightColor: {r: 0, g: 0, b: 0, a: 0}
+  grabbingObjects: []
   usingState: 0
 --- !u!54 &866098108
 Rigidbody:
@@ -11952,6 +11973,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc28a9e8a157ca04b8eef4e448e338ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  AssemblyBase: {fileID: 0}
   snapFlag: 0
   snapOrderObjects:
   - {fileID: 816857879}
@@ -12064,6 +12086,7 @@ MonoBehaviour:
   allowedUseControllers: 0
   objectHighlighter: {fileID: 0}
   touchHighlightColor: {r: 0, g: 0, b: 0, a: 0}
+  grabbingObjects: []
   usingState: 0
 --- !u!1 &939521904
 GameObject:
@@ -12371,6 +12394,7 @@ MonoBehaviour:
   allowedUseControllers: 0
   objectHighlighter: {fileID: 0}
   touchHighlightColor: {r: 0, g: 0, b: 0, a: 0}
+  grabbingObjects: []
   usingState: 0
 --- !u!54 &959463151
 Rigidbody:
@@ -12476,6 +12500,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc28a9e8a157ca04b8eef4e448e338ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  AssemblyBase: {fileID: 0}
   snapFlag: 0
   snapOrderObjects:
   - {fileID: 2083798733}
@@ -12484,7 +12509,7 @@ MonoBehaviour:
   - {fileID: 1945178106}
   - {fileID: 1444647455}
   - {fileID: 959463156}
-  - {fileID: 0}
+  - {fileID: 866098104}
   snapZones:
   - {fileID: 2049252779}
   MySnapZone: {fileID: 1308040864}
@@ -13271,6 +13296,7 @@ MonoBehaviour:
   allowedUseControllers: 0
   objectHighlighter: {fileID: 0}
   touchHighlightColor: {r: 0, g: 0, b: 0, a: 0}
+  grabbingObjects: []
   usingState: 0
 --- !u!65 &1018776605
 BoxCollider:
@@ -13580,6 +13606,7 @@ MonoBehaviour:
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
   highlightTimeThreshold: 1.5
+  HighlightGameObject: {fileID: 0}
 --- !u!114 &1024257072
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13662,6 +13689,7 @@ MonoBehaviour:
   allowedUseControllers: 0
   objectHighlighter: {fileID: 0}
   touchHighlightColor: {r: 0.93333334, g: 0.8784314, b: 0, a: 1}
+  grabbingObjects: []
   usingState: 0
 --- !u!65 &1024257076
 BoxCollider:
@@ -14885,6 +14913,7 @@ MonoBehaviour:
   allowedUseControllers: 0
   objectHighlighter: {fileID: 0}
   touchHighlightColor: {r: 0, g: 0, b: 0, a: 0}
+  grabbingObjects: []
   usingState: 0
 --- !u!65 &1170329745
 BoxCollider:
@@ -16420,6 +16449,7 @@ MonoBehaviour:
   allowedUseControllers: 0
   objectHighlighter: {fileID: 0}
   touchHighlightColor: {r: 0, g: 0, b: 0, a: 0}
+  grabbingObjects: []
   usingState: 0
 --- !u!65 &1289986575
 BoxCollider:
@@ -17721,6 +17751,7 @@ MonoBehaviour:
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
   highlightTimeThreshold: 1.5
+  HighlightGameObject: {fileID: 0}
 --- !u!114 &1410387065
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17803,6 +17834,7 @@ MonoBehaviour:
   allowedUseControllers: 0
   objectHighlighter: {fileID: 0}
   touchHighlightColor: {r: 0.93333334, g: 0.8784314, b: 0, a: 1}
+  grabbingObjects: []
   usingState: 0
 --- !u!65 &1410387069
 BoxCollider:
@@ -18360,6 +18392,7 @@ MonoBehaviour:
   allowedUseControllers: 0
   objectHighlighter: {fileID: 0}
   touchHighlightColor: {r: 0, g: 0, b: 0, a: 0}
+  grabbingObjects: []
   usingState: 0
 --- !u!54 &1444647450
 Rigidbody:
@@ -18464,6 +18497,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc28a9e8a157ca04b8eef4e448e338ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  AssemblyBase: {fileID: 0}
   snapFlag: 0
   snapOrderObjects:
   - {fileID: 2083798733}
@@ -18472,7 +18506,7 @@ MonoBehaviour:
   - {fileID: 1945178106}
   - {fileID: 1444647455}
   - {fileID: 959463156}
-  - {fileID: 0}
+  - {fileID: 866098104}
   snapZones:
   - {fileID: 1308040864}
   MySnapZone: {fileID: 1701747175}
@@ -19113,6 +19147,7 @@ MonoBehaviour:
   allowedUseControllers: 0
   objectHighlighter: {fileID: 0}
   touchHighlightColor: {r: 0, g: 0, b: 0, a: 0}
+  grabbingObjects: []
   usingState: 0
 --- !u!65 &1477756854
 BoxCollider:
@@ -21753,6 +21788,7 @@ MonoBehaviour:
   allowedUseControllers: 0
   objectHighlighter: {fileID: 0}
   touchHighlightColor: {r: 0, g: 0, b: 0, a: 0}
+  grabbingObjects: []
   usingState: 0
 --- !u!54 &1707330408
 Rigidbody:
@@ -21857,6 +21893,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc28a9e8a157ca04b8eef4e448e338ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  AssemblyBase: {fileID: 0}
   snapFlag: 0
   snapOrderObjects:
   - {fileID: 2083798733}
@@ -21865,7 +21902,7 @@ MonoBehaviour:
   - {fileID: 1945178106}
   - {fileID: 1444647455}
   - {fileID: 959463156}
-  - {fileID: 0}
+  - {fileID: 866098104}
   snapZones:
   - {fileID: 1007945930}
   MySnapZone: {fileID: 1495062805}
@@ -24401,6 +24438,7 @@ MonoBehaviour:
   allowedUseControllers: 0
   objectHighlighter: {fileID: 0}
   touchHighlightColor: {r: 0, g: 0, b: 0, a: 0}
+  grabbingObjects: []
   usingState: 0
 --- !u!65 &1835168475
 BoxCollider:
@@ -25003,6 +25041,7 @@ MonoBehaviour:
   allowedUseControllers: 0
   objectHighlighter: {fileID: 0}
   touchHighlightColor: {r: 0, g: 0, b: 0, a: 0}
+  grabbingObjects: []
   usingState: 0
 --- !u!64 &1857545604
 MeshCollider:
@@ -25030,6 +25069,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc28a9e8a157ca04b8eef4e448e338ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  AssemblyBase: {fileID: 0}
   snapFlag: 0
   snapOrderObjects:
   - {fileID: 816857879}
@@ -26310,6 +26350,7 @@ MonoBehaviour:
   allowedUseControllers: 0
   objectHighlighter: {fileID: 0}
   touchHighlightColor: {r: 0, g: 0, b: 0, a: 0}
+  grabbingObjects: []
   usingState: 0
 --- !u!64 &1945178102
 MeshCollider:
@@ -26397,6 +26438,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc28a9e8a157ca04b8eef4e448e338ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  AssemblyBase: {fileID: 0}
   snapFlag: 0
   snapOrderObjects:
   - {fileID: 2083798733}
@@ -26405,7 +26447,7 @@ MonoBehaviour:
   - {fileID: 1945178106}
   - {fileID: 1444647455}
   - {fileID: 959463156}
-  - {fileID: 0}
+  - {fileID: 866098104}
   snapZones:
   - {fileID: 1701747175}
   MySnapZone: {fileID: 41194827}
@@ -27236,6 +27278,7 @@ MonoBehaviour:
   allowedUseControllers: 0
   objectHighlighter: {fileID: 0}
   touchHighlightColor: {r: 0, g: 0, b: 0, a: 0}
+  grabbingObjects: []
   usingState: 0
 --- !u!65 &2002529927
 BoxCollider:
@@ -28222,6 +28265,7 @@ MonoBehaviour:
   allowedUseControllers: 0
   objectHighlighter: {fileID: 0}
   touchHighlightColor: {r: 0, g: 0, b: 0, a: 0}
+  grabbingObjects: []
   usingState: 0
 --- !u!1 &2028573346
 GameObject:
@@ -28645,6 +28689,7 @@ MonoBehaviour:
   allowedUseControllers: 0
   objectHighlighter: {fileID: 0}
   touchHighlightColor: {r: 0, g: 0, b: 0, a: 0}
+  grabbingObjects: []
   usingState: 0
 --- !u!64 &2054072501
 MeshCollider:
@@ -28672,6 +28717,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc28a9e8a157ca04b8eef4e448e338ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  AssemblyBase: {fileID: 0}
   snapFlag: 0
   snapOrderObjects:
   - {fileID: 816857879}
@@ -29624,6 +29670,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc28a9e8a157ca04b8eef4e448e338ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  AssemblyBase: {fileID: 0}
   snapFlag: 0
   snapOrderObjects:
   - {fileID: 2083798733}
@@ -29632,7 +29679,7 @@ MonoBehaviour:
   - {fileID: 1945178106}
   - {fileID: 1444647455}
   - {fileID: 959463156}
-  - {fileID: 0}
+  - {fileID: 866098104}
   snapZones:
   - {fileID: 1495062805}
   MySnapZone: {fileID: 2046603258}
@@ -29700,6 +29747,7 @@ MonoBehaviour:
   allowedUseControllers: 0
   objectHighlighter: {fileID: 0}
   touchHighlightColor: {r: 0, g: 0, b: 0, a: 0}
+  grabbingObjects: []
   usingState: 0
 --- !u!54 &2083798737
 Rigidbody:

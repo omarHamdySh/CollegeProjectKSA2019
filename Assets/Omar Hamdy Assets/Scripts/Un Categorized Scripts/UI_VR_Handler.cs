@@ -1,4 +1,4 @@
-﻿using System.Collections;
+﻿ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
@@ -10,11 +10,14 @@ public class UI_VR_Handler : MonoBehaviour
     public UnityEvent onSelect;
     public float highlightTimeThreshold = 3;
     float seconds;
+    public GameObject HighlightGameObject;
 
     // Start is called before the first frame update
     void Start()
     {
         Vrscript = GetComponent<VRTK_InteractableObject>();
+        HighlightGameObject.SetActive(false);
+
     }
 
     // Update is called once per frame
@@ -40,7 +43,16 @@ public class UI_VR_Handler : MonoBehaviour
             onSelect.Invoke();
         }
     }
+    public void EnableHighlight()
+    {
+        HighlightGameObject.SetActive(true);
 
+    }
+    public void DisableHighlight()
+    {
+
+        HighlightGameObject.SetActive(false);
+    }
 
 }
 

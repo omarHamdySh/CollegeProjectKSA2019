@@ -7,6 +7,7 @@ public class SnapGroupOrder : MonoBehaviour
     public SGO_State state = SGO_State.Waiting;
     public SGO_Manager mySGO_Manager;
     public List<SnapOrder> SGO_Members;
+    public bool hasSnapMechanic = false;
     public int myIndex;
 
     public void Start()
@@ -41,9 +42,9 @@ public class SnapGroupOrder : MonoBehaviour
         else
         {   //If there is a next member set the state of the next member to be InAction.
             mySGO_Manager.SGOs[this.myIndex + 1].state = SGO_State.InAction;
-            //Disable this snap group members
+            //Disable this snap group members of the previous SGO.
             mySGO_Manager.SGOs[this.myIndex].deactivateThisSGOMemebers();
-            //Enable next snap group member
+            //Enable next snap group members of the current SGO.
             mySGO_Manager.SGOs[this.myIndex + 1].activateCurrentSGOMemebers();
             mySGO_Manager.currentSGO = mySGO_Manager.SGOs[this.myIndex + 1];
         }
