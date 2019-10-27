@@ -5,11 +5,26 @@ using UnityEngine;
 public class ItemType1 : MonoBehaviour, IGameItem
 {
     public GameItemName itemName;
+    
     ItemsSwitcher itemSwitcher;
+    public bool CheckAvailableWepaons()
+    {
+        if (GameManager.Instance.currentLevel == GameLevelsNames.Level_0
+          ||GameManager.Instance.currentLevel == GameLevelsNames.Level_1
+          ||GameManager.Instance.currentLevel == GameLevelsNames.Level_2)
+        {
+            return true;
+        }
+        return false;
+    }
     public void switchOn()
     {
-        switchChildrenOn();
-        itemSwitcher.switchOtherItemsOff(this);
+        if (CheckAvailableWepaons())
+        {
+            switchChildrenOn();
+            itemSwitcher.switchOtherItemsOff(this);
+        }
+        
     }
 
     public void switchOff()

@@ -5,21 +5,28 @@ using UnityEngine;
 public class PlayerBinaryData : MonoBehaviour
 {
 
-    #region Golobal Prametrs
-    //User name and password we will check it from local saved file
-    public int UserId = 0;
-    public string userName;
-    public string password;
-    public bool firstTimeUseApp=true;
+    #region Comments Prametrs
+    //public string userName;
+    //public string password;
+    //public bool firstTimeUseApp = true;
     //these variable calculate the sum of time spent in training and test for the user
-    public int hourSpent;
-    public int secondSpent;
-    public int MinutSpent;
-  //List of the player data that will be stored or retrieved from the local file
-    public ShootingTrainingData CurrentChangesOnShootingTrainingData=null;
-    public ShootingTestData CurrentChangesOnShootingTestData=null;
+    //public int hourSpent;
+    //public int secondSpent;
+    //public int MinutSpent;
+    //List of the player data that will be stored or retrieved from the local file
+    //User name and password we will check it from local saved file
+    #endregion
+
+
+    #region Golobal Prametrs
+    public int UserId = 0;
+
+    public ShootingTrainingData CurrentChangesOnShootingTrainingData = null;
+    public ShootingTestData CurrentChangesOnShootingTestData = null;
     public AssembleTestData CurrentChangesOnAssemblyTestData = null;
     public AssembleTrainingData CurrentChangesOnAssemblyTraining = null;
+    public int currentScore = 0;
+    public bool isTraining = false;
     #endregion
 
 
@@ -55,41 +62,69 @@ public class PlayerBinaryData : MonoBehaviour
         return shootingadata;
     }
     //Set All the Shooting Data fot the User
-    public void StoreTrainingShootingDataForUser(int range, int bulletNumber, float accuracy, string GPA, int shootingResultSum)
+    public void StoreTrainingShootingDataForUser()
     {
-        ShootingTrainingData sh = new ShootingTrainingData(range, bulletNumber, accuracy, GPA, shootingResultSum);
-        DbManager.Instance.AddNewShootingTrainingDataRecord(UserId,sh);
+        DbManager.Instance.AddNewShootingTrainingDataRecord(UserId, CurrentChangesOnShootingTrainingData);
     }
     //Test Data sent to Trainig class to store 
-    public void StoreTestShootingDataForUser(int targetMiss, int targetHit, float accureacy, string GPA, int shootingRange, int min, int sec)
+    public void StoreTestShootingDataForUser()
     {
-        ShootingTestData sh = new ShootingTestData(targetMiss, targetHit, accureacy, GPA, shootingRange, min, sec);
-        DbManager.Instance.AddNewShootingTestDataRecord(UserId, sh);
+        DbManager.Instance.AddNewShootingTestDataRecord(UserId, CurrentChangesOnShootingTestData);
     }
     //Save all the current data that user change during Play the application 
     #endregion
 
 
     #region Assembly Methods
-    public void StoreTestAssemblyDataForUser(int seconds,int minutes)
+    public void StoreTestAssemblyDataForUser()
     {
-        AssembleTestData sh = new AssembleTestData(seconds, minutes);
-        DbManager.Instance.AddNewAssemblyTestDataRecord(UserId,sh);
+        DbManager.Instance.AddNewAssemblyTestDataRecord(UserId, CurrentChangesOnAssemblyTestData);
     }
-    public void StoreTraingingAssemblyDataForUser(int min, int sec, int result, string gpa)
+    public void StoreTraingingAssemblyDataForUser()
     {
-        AssembleTrainingData sh = new AssembleTrainingData(min,sec,result, gpa);
-        DbManager.Instance.AddNewAssemblyTrainingDataRecord(UserId, sh);
+        DbManager.Instance.AddNewAssemblyTrainingDataRecord(UserId, CurrentChangesOnAssemblyTraining);
     }
     public List<AssembleTestData> GetAssemblyTestRecordsForcUser()
     {
-      List<AssembleTestData> tests = DbManager.Instance.GetAssemblyTestRecord(UserId);
+        List<AssembleTestData> tests = DbManager.Instance.GetAssemblyTestRecord(UserId);
         return tests;
     }
     public List<AssembleTrainingData> GetAssemblyTrainingRecordsForUser()
     {
-        List<AssembleTrainingData>  sh = DbManager.Instance.GetAssemblyTrainingRecord(UserId);
+        List<AssembleTrainingData> sh = DbManager.Instance.GetAssemblyTrainingRecord(UserId);
         return sh;
     }
     #endregion
+    #region deprecated
+    //public void StorePlayerData()
+    //{
+    //    if (isTraining)
+    //    {
+    //        if (CurrentChangesOnShootingTrainingData != null)
+    //        {
+    //            StoreTrainingShootingDataForUser();
+    //        } else if (CurrentChangesOnAssemblyTraining != null) {
+    //            StoreTraingingAssemblyDataForUser();
+    //        }
+    //    }
+    //    else
+    //    {
+    //        if (CurrentChangesOnAssemblyTestData != null)
+    //        {
+    //            StoreTestAssemblyDataForUser();
+    //        }
+    //        else if (CurrentChangesOnShootingTestData != null)
+    //        {
+    //            StoreTestShootingDataForUser();
+    //        }
+    //    }
+    //    CurrentChangesOnShootingTrainingData = null;
+    //    CurrentChangesOnShootingTestData = null;
+    //    CurrentChangesOnAssemblyTestData = null;
+    //    CurrentChangesOnAssemblyTraining = null;
+    //}
+    #endregion
 }
+
+
+

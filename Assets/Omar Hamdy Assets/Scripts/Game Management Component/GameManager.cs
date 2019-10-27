@@ -72,7 +72,7 @@ public class GameManager : MonoBehaviour
     [HideInInspector]
     public ControllerSwitcher[] controllerSwitcher;
     //-------------------------------------------
-    private GameLevelsNames currentLevel;
+    public GameLevelsNames currentLevel;
     #endregion
 
 

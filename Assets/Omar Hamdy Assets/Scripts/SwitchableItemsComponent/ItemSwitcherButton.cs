@@ -5,7 +5,21 @@ using UnityEngine;
 public class ItemSwitcherButton : MonoBehaviour
 {
     public GameItemName itemNameToSwitchTo;
-
+    public GameLevelsNames level;
+    private void Start()
+    {
+        //if ((int)level< (int)LevelManager.Instance.currentLevel)
+        //{
+            this.gameObject.GetComponent<BoxCollider>().enabled = false;
+       // }
+    }
+    public void OpenCollider()
+    {
+        if ((int)level >= (int)LevelManager.Instance.currentLevel)
+        {
+            this.gameObject.GetComponent<BoxCollider>().enabled = true;
+        }
+    }
     /// <summary>
     /// This method must be only used when the Game Item list exist in the scene AKA GameItem Prefabs Component.
     /// </summary>

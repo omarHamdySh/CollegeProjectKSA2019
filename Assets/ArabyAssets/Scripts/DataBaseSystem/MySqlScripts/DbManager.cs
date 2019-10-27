@@ -98,7 +98,6 @@ public class DbManager : MonoBehaviour
         }
         Init();
         int y = GetIdByUserNameAndPassword(RegInputUserName.text, RegInputPassword.text);
-        Debug.LogError(y);
         if (y == -1)
         {
             CloseDataBaseConnection();
@@ -134,12 +133,9 @@ public class DbManager : MonoBehaviour
         return true;
     }
     //Initialize the Database Connection 2
+    //open connection 
     public void Init()
     {
-        if (CheckServergInInputValidation())
-        {
-            dbDataSource = ServerIpAdrees.text;
-        }
         MySqlConnectionStringBuilder connString = new MySqlConnectionStringBuilder();
         connString.Server = dbDataSource;
         connString.UserID = dbUserName;
@@ -160,7 +156,7 @@ public class DbManager : MonoBehaviour
             ErrorDialougText.text = e.Message;
         }
     }
-   
+   //close connection 
     public void CloseDataBaseConnection()
     {
         try
@@ -178,20 +174,14 @@ public class DbManager : MonoBehaviour
     {
         string playerName = RegInputUserName.text.ToLower();
         string playerPassword = RegInputPassword.text.ToLower();
-        if (CheckRegistrationInputValidation() == true)
-        {
             Init();
             RegisterNewUser(playerName, playerPassword);
-        }
+        
     }
     public void SignIn()
     {
         string playerName = SignInputUserName.text.ToLower();
         string playerPassword = SignInputPassword.text.ToLower();
-        if (CheckSigningInInputValidation() == false)
-        {
-            return;
-        }
         Init();
         if ( SigningIn(playerName, playerPassword))
         {
@@ -214,7 +204,6 @@ public class DbManager : MonoBehaviour
     {
         try
         {
-            
             MySqlCommand comm = dbConnection.CreateCommand();
             comm.CommandText = "INSERT INTO userdata(UserName,Password,FirstTime) Values(@username,@password,@firsttime)";
             comm.Parameters.AddWithValue("@username", usernName);
@@ -244,7 +233,6 @@ public class DbManager : MonoBehaviour
                 rdr.Close();
                 return true;
             }
-            rdr.Close();
 
         }
         catch (Exception e)
@@ -291,11 +279,9 @@ public class DbManager : MonoBehaviour
             comm.Parameters.AddWithValue("@min", assemblyTest.minutes);
             comm.Parameters.AddWithValue("@hour", assemblyTest.seconds);
             comm.ExecuteNonQuery();
-            Debug.Log("New Test Assembly Record Added Successully");
         }
         catch (Exception e)
         {
-            Debug.Log("Error While adding Test Assembly Record ");
             ErrorDialougText.color = Color.red;
             ErrorDialougText.text = "there is no user with this Id to add record to it ";
 
@@ -312,11 +298,9 @@ public class DbManager : MonoBehaviour
             comm.Parameters.AddWithValue("@gpa", assemblyTraining.GPA);
             comm.Parameters.AddWithValue("@res", assemblyTraining.result);
             comm.ExecuteNonQuery();
-            Debug.Log("New Training Assembly Record Added Successully");
         }
         catch (Exception e)
         {
-            Debug.Log("Error While adding Training Assembly Record ");
             ErrorDialougText.color = Color.red;
             ErrorDialougText.text = "there is no user with this Id to add record to it ";
 

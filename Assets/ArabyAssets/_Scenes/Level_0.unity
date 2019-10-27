@@ -1030,6 +1030,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc28a9e8a157ca04b8eef4e448e338ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  AssemblyBase: {fileID: 0}
   snapFlag: 0
   snapOrderObjects:
   - {fileID: 816857879}
@@ -1041,6 +1042,8 @@ MonoBehaviour:
   - {fileID: 118247097}
   snapZones: []
   MySnapZone: {fileID: 2145963157}
+  mySnapGroupOrder: {fileID: 0}
+  thisSnapOrderIndex: 0
 --- !u!1 &124486519
 GameObject:
   m_ObjectHideFlags: 0
@@ -1184,6 +1187,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc28a9e8a157ca04b8eef4e448e338ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  AssemblyBase: {fileID: 0}
   snapFlag: 0
   snapOrderObjects:
   - {fileID: 816857879}
@@ -1196,6 +1200,8 @@ MonoBehaviour:
   snapZones:
   - {fileID: 2073526267}
   MySnapZone: {fileID: 27796836}
+  mySnapGroupOrder: {fileID: 0}
+  thisSnapOrderIndex: 0
 --- !u!114 &145938061
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3470,6 +3476,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc28a9e8a157ca04b8eef4e448e338ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  AssemblyBase: {fileID: 0}
   snapFlag: 0
   snapOrderObjects:
   - {fileID: 816857879}
@@ -3482,6 +3489,8 @@ MonoBehaviour:
   snapZones:
   - {fileID: 2145963157}
   MySnapZone: {fileID: 1694200337}
+  mySnapGroupOrder: {fileID: 0}
+  thisSnapOrderIndex: 0
 --- !u!1 &603796781
 GameObject:
   m_ObjectHideFlags: 0
@@ -3710,6 +3719,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemNameToSwitchTo: 2
+  level: 0
 --- !u!114 &675562535
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4016,6 +4026,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemNameToSwitchTo: 1
+  level: 0
 --- !u!1 &705423489
 GameObject:
   m_ObjectHideFlags: 0
@@ -6071,6 +6082,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc28a9e8a157ca04b8eef4e448e338ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  AssemblyBase: {fileID: 0}
   snapFlag: 0
   snapOrderObjects:
   - {fileID: 816857879}
@@ -6083,6 +6095,8 @@ MonoBehaviour:
   snapZones:
   - {fileID: 946344080}
   MySnapZone: {fileID: 1612579619}
+  mySnapGroupOrder: {fileID: 0}
+  thisSnapOrderIndex: 0
 --- !u!4 &828248321
 Transform:
   m_ObjectHideFlags: 0
@@ -6208,6 +6222,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc28a9e8a157ca04b8eef4e448e338ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  AssemblyBase: {fileID: 0}
   snapFlag: 0
   snapOrderObjects:
   - {fileID: 816857879}
@@ -6220,6 +6235,8 @@ MonoBehaviour:
   snapZones:
   - {fileID: 27796836}
   MySnapZone: {fileID: 1996215711}
+  mySnapGroupOrder: {fileID: 0}
+  thisSnapOrderIndex: 0
 --- !u!54 &935877003
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -6886,6 +6903,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemNameToSwitchTo: 2
+  level: 0
 --- !u!1 &1030994621
 GameObject:
   m_ObjectHideFlags: 0
@@ -8015,6 +8033,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemNameToSwitchTo: 2
+  level: 0
 --- !u!1 &1291841716
 GameObject:
   m_ObjectHideFlags: 0
@@ -8264,6 +8283,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemNameToSwitchTo: 3
+  level: 0
 --- !u!1 &1364546624
 GameObject:
   m_ObjectHideFlags: 0
@@ -9018,6 +9038,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemNameToSwitchTo: 1
+  level: 0
 --- !u!1 &1484588501
 GameObject:
   m_ObjectHideFlags: 0
@@ -10089,6 +10110,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemNameToSwitchTo: 2
+  level: 0
 --- !u!1 &1694200337
 GameObject:
   m_ObjectHideFlags: 0
@@ -12309,6 +12331,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc28a9e8a157ca04b8eef4e448e338ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  AssemblyBase: {fileID: 0}
   snapFlag: 0
   snapOrderObjects:
   - {fileID: 816857879}
@@ -12321,6 +12344,8 @@ MonoBehaviour:
   snapZones:
   - {fileID: 1694200337}
   MySnapZone: {fileID: 2073526267}
+  mySnapGroupOrder: {fileID: 0}
+  thisSnapOrderIndex: 0
 --- !u!1 &1860220278
 GameObject:
   m_ObjectHideFlags: 0
@@ -13256,6 +13281,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemNameToSwitchTo: 1
+  level: 0
 --- !u!1 &2002801451
 GameObject:
   m_ObjectHideFlags: 0
@@ -13848,6 +13874,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc28a9e8a157ca04b8eef4e448e338ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  AssemblyBase: {fileID: 0}
   snapFlag: 0
   snapOrderObjects:
   - {fileID: 816857879}
@@ -13860,6 +13887,8 @@ MonoBehaviour:
   snapZones:
   - {fileID: 1996215711}
   MySnapZone: {fileID: 946344080}
+  mySnapGroupOrder: {fileID: 0}
+  thisSnapOrderIndex: 0
 --- !u!1 &2056549313
 GameObject:
   m_ObjectHideFlags: 0
@@ -14175,6 +14204,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemNameToSwitchTo: 4
+  level: 0
 --- !u!1 &2088820839
 GameObject:
   m_ObjectHideFlags: 0
@@ -24376,72 +24406,3 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemName: 1
---- !u!1001 &7068154871276868833
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 7068154872492736413, guid: 934e6f322f96f2a469b5c7726916b88a,
-        type: 3}
-      propertyPath: m_Name
-      value: Cube
-      objectReference: {fileID: 0}
-    - target: {fileID: 7068154872492736414, guid: 934e6f322f96f2a469b5c7726916b88a,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0.499
-      objectReference: {fileID: 0}
-    - target: {fileID: 7068154872492736414, guid: 934e6f322f96f2a469b5c7726916b88a,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 2.5202
-      objectReference: {fileID: 0}
-    - target: {fileID: 7068154872492736414, guid: 934e6f322f96f2a469b5c7726916b88a,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -8.28
-      objectReference: {fileID: 0}
-    - target: {fileID: 7068154872492736414, guid: 934e6f322f96f2a469b5c7726916b88a,
-        type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7068154872492736414, guid: 934e6f322f96f2a469b5c7726916b88a,
-        type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7068154872492736414, guid: 934e6f322f96f2a469b5c7726916b88a,
-        type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7068154872492736414, guid: 934e6f322f96f2a469b5c7726916b88a,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7068154872492736414, guid: 934e6f322f96f2a469b5c7726916b88a,
-        type: 3}
-      propertyPath: m_RootOrder
-      value: 8
-      objectReference: {fileID: 0}
-    - target: {fileID: 7068154872492736414, guid: 934e6f322f96f2a469b5c7726916b88a,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7068154872492736414, guid: 934e6f322f96f2a469b5c7726916b88a,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7068154872492736414, guid: 934e6f322f96f2a469b5c7726916b88a,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 934e6f322f96f2a469b5c7726916b88a, type: 3}
