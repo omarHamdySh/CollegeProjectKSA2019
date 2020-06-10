@@ -2,10 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-#region SnapOrder's SnapOrderFlag  Enum
-
-
-#endregion
 public class SnapOrder : MonoBehaviour
 {
     #region Enums
